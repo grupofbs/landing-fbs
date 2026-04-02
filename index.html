@@ -4,435 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grupo FBS — Presente Exclusivo para Empresários</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Performance: preconnect + preload Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+
+    <!-- ============================================================
+         META PIXEL — ⚠️ NILTON: substituir YOUR_PIXEL_ID_HERE
+         pelo ID do seu Pixel (ex: 1234567890123456)
+         Encontre em: business.facebook.com → Gerenciador de Eventos
+    ============================================================ -->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','YOUR_PIXEL_ID_HERE'); // ← SUBSTITUIR AQUI
+    fbq('track','PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"/></noscript>
+    <!-- End Meta Pixel -->
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        :root {
-            --navy: #0A1628;
-            --gold: #C9A84C;
-            --gold-light: #E8D5A0;
-            --white: #FFFFFF;
-            --gray: #F5F5F5;
-            --dark-gray: #333;
-        }
-        
-        body {
-            font-family: 'DM Sans', sans-serif;
-            color: var(--white);
-            background: var(--navy);
-        }
-        
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
-        
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--navy:#0A1628;--gold:#C9A84C;--gold-light:#E8D5A0;--white:#FFFFFF;--gray:#F5F5F5;--dark-gray:#333;--error:#D32F2F;--error-bg:#FFEBEE}
+        body{font-family:'DM Sans',sans-serif;color:var(--white);background:var(--navy)}
+        h1,h2,h3,h4{font-family:'Playfair Display',serif}
+
         /* HERO */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #0A1628 0%, #152238 50%, #0A1628 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(201,168,76,0.08) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 60%, rgba(201,168,76,0.05) 0%, transparent 50%);
-            animation: shimmer 15s ease-in-out infinite alternate;
-        }
-        
-        @keyframes shimmer {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-5%, -5%); }
-        }
-        
-        .hero-content { position: relative; z-index: 1; max-width: 800px; }
-        
-        .hero-badge {
-            display: inline-block;
-            padding: 8px 24px;
-            border: 1px solid var(--gold);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            color: var(--gold);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-        }
-        
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-        
-        .hero h1 span { color: var(--gold); }
-        
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.85;
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* CHOICE SECTION */
-        .choice-section {
-            padding: 80px 20px;
-            background: var(--white);
-            color: var(--dark-gray);
-            text-align: center;
-        }
-        
-        .choice-section h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            color: var(--navy);
-            margin-bottom: 15px;
-        }
-        
-        .choice-section > p {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 50px;
-        }
-        
-        .choices {
-            display: flex;
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .choice-card {
-            flex: 1;
-            min-width: 280px;
-            max-width: 420px;
-            background: var(--white);
-            border: 2px solid #E0E0E0;
-            border-radius: 20px;
-            padding: 40px 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-        
-        .choice-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(201,168,76,0.15);
-        }
-        
-        .choice-card.selected {
-            border-color: var(--gold);
-            background: linear-gradient(135deg, #FFFDF5, #FFF);
-            box-shadow: 0 20px 60px rgba(201,168,76,0.2);
-        }
-        
-        .choice-emoji { font-size: 3.5rem; margin-bottom: 20px; }
-        
-        .choice-card h3 {
-            font-size: 1.4rem;
-            color: var(--navy);
-            margin-bottom: 10px;
-        }
-        
-        .choice-card p { color: #666; font-size: 0.95rem; line-height: 1.6; }
-        
+        .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;background:linear-gradient(135deg,#0A1628 0%,#152238 50%,#0A1628 100%);position:relative;overflow:hidden}
+        .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 40%,rgba(201,168,76,.08) 0%,transparent 50%),radial-gradient(circle at 70% 60%,rgba(201,168,76,.05) 0%,transparent 50%);animation:shimmer 15s ease-in-out infinite alternate}
+        @keyframes shimmer{0%{transform:translate(0,0)}100%{transform:translate(-5%,-5%)}}
+        .hero-content{position:relative;z-index:1;max-width:800px}
+        .hero-badge{display:inline-block;padding:8px 24px;border:1px solid var(--gold);border-radius:50px;font-size:.85rem;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:30px}
+        .hero h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.2;margin-bottom:20px}
+        .hero h1 span{color:var(--gold)}
+        .hero p{font-size:1.2rem;opacity:.85;margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto}
+
+        /* CHOICE */
+        .choice-section{padding:80px 20px;background:var(--white);color:var(--dark-gray);text-align:center}
+        .choice-section h2{font-size:clamp(1.8rem,4vw,2.5rem);color:var(--navy);margin-bottom:15px}
+        .choice-section>p{font-size:1.1rem;color:#666;margin-bottom:50px}
+        .choices{display:flex;gap:30px;max-width:900px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+        .choice-card{flex:1;min-width:280px;max-width:420px;background:var(--white);border:2px solid #E0E0E0;border-radius:20px;padding:40px 30px;cursor:pointer;transition:all .3s ease;text-align:center}
+        .choice-card:hover{border-color:var(--gold);transform:translateY(-5px);box-shadow:0 20px 60px rgba(201,168,76,.15)}
+        .choice-card.selected{border-color:var(--gold);background:linear-gradient(135deg,#FFFDF5,#FFF);box-shadow:0 20px 60px rgba(201,168,76,.2)}
+        .choice-emoji{font-size:3.5rem;margin-bottom:20px}
+        .choice-card h3{font-size:1.4rem;color:var(--navy);margin-bottom:10px}
+        .choice-card p{color:#666;font-size:.95rem;line-height:1.6}
+
         /* REVEAL */
-        .reveal {
-            padding: 80px 20px;
-            background: var(--navy);
-            text-align: center;
-            display: none;
-        }
-        
-        .reveal.active { display: block; }
-        
-        .reveal h2 {
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            margin-bottom: 15px;
-        }
-        
-        .reveal h2 span { color: var(--gold); }
-        
-        .reveal > p {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            margin-bottom: 50px;
-        }
-        
-        .package-grid {
-            display: flex;
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto 50px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .package-item {
-            flex: 1;
-            min-width: 280px;
-            max-width: 420px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(201,168,76,0.3);
-            border-radius: 16px;
-            padding: 30px;
-            text-align: left;
-        }
-        
-        .package-item h3 {
-            color: var(--gold);
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-        
-        .package-item ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .package-item li {
-            padding: 8px 0;
-            padding-left: 25px;
-            position: relative;
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-        
-        .package-item li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--gold);
-            font-weight: bold;
-        }
-        
+        .reveal{padding:80px 20px;background:var(--navy);text-align:center;display:none}
+        .reveal.active{display:block}
+        .reveal h2{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:15px}
+        .reveal h2 span{color:var(--gold)}
+        .reveal>p{font-size:1.1rem;opacity:.8;margin-bottom:50px}
+        .package-grid{display:flex;gap:30px;max-width:900px;margin:0 auto 50px;flex-wrap:wrap;justify-content:center}
+        .package-item{flex:1;min-width:280px;max-width:420px;background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.3);border-radius:16px;padding:30px;text-align:left}
+        .package-item h3{color:var(--gold);font-size:1.2rem;margin-bottom:15px}
+        .package-item ul{list-style:none;padding:0}
+        .package-item li{padding:8px 0 8px 25px;position:relative;font-size:.95rem;opacity:.9}
+        .package-item li::before{content:'✓';position:absolute;left:0;color:var(--gold);font-weight:bold}
+
         /* PRICING */
-        .pricing-box {
-            max-width: 600px;
-            margin: 0 auto 40px;
-            background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
-            border: 2px solid var(--gold);
-            border-radius: 20px;
-            padding: 40px;
-            text-align: center;
-        }
-        
-        .price-compare {
-            font-size: 1.1rem;
-            opacity: 0.7;
-            text-decoration: line-through;
-            margin-bottom: 5px;
-        }
-        
-        .price-main {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
-            color: var(--gold);
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-        
-        .price-installment {
-            font-size: 1.2rem;
-            color: var(--gold-light);
-            margin-bottom: 20px;
-        }
-        
-        .price-guarantee {
-            font-size: 0.95rem;
-            opacity: 0.7;
-            margin-bottom: 25px;
-        }
-        
+        .pricing-box{max-width:600px;margin:0 auto 40px;background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.05));border:2px solid var(--gold);border-radius:20px;padding:40px;text-align:center}
+        .price-compare{font-size:1.1rem;opacity:.7;text-decoration:line-through;margin-bottom:5px}
+        .price-main{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,3.5rem);color:var(--gold);font-weight:700;margin-bottom:5px}
+        .price-installment{font-size:1.2rem;color:var(--gold-light);margin-bottom:20px}
+        .price-guarantee{font-size:.95rem;opacity:.7;margin-bottom:25px}
+
         /* FORM */
-        .form-section {
-            padding: 80px 20px;
-            background: var(--white);
-            color: var(--dark-gray);
-        }
-        
-        .form-container {
-            max-width: 500px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .form-container h2 {
-            color: var(--navy);
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        
-        .form-container > p {
-            color: #666;
-            margin-bottom: 30px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--navy);
-        }
-        
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 14px 18px;
-            border: 2px solid #E0E0E0;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-family: 'DM Sans', sans-serif;
-            transition: border-color 0.3s;
-        }
-        
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--gold);
-        }
-        
+        .form-section{padding:80px 20px;background:var(--white);color:var(--dark-gray)}
+        .form-container{max-width:500px;margin:0 auto;text-align:center}
+        .form-container h2{color:var(--navy);font-size:2rem;margin-bottom:10px}
+        .form-container>p{color:#666;margin-bottom:30px}
+        .form-group{margin-bottom:20px;text-align:left}
+        .form-group label{display:block;font-weight:600;margin-bottom:8px;color:var(--navy)}
+        .form-group input,.form-group select{width:100%;padding:14px 18px;border:2px solid #E0E0E0;border-radius:12px;font-size:1rem;font-family:'DM Sans',sans-serif;transition:border-color .3s}
+        .form-group input:focus,.form-group select:focus{outline:none;border-color:var(--gold)}
+        /* Validation error states */
+        .form-group.has-error input,.form-group.has-error select{border-color:var(--error);background:var(--error-bg)}
+        .form-error{display:none;color:var(--error);font-size:.82rem;margin-top:5px;font-weight:500}
+        .form-group.has-error .form-error{display:block}
+        .form-group.is-valid input,.form-group.is-valid select{border-color:#2E7D32}
+
         /* CTA */
-        .cta-btn {
-            display: inline-block;
-            padding: 18px 50px;
-            background: var(--gold);
-            color: var(--navy);
-            font-size: 1.1rem;
-            font-weight: 700;
-            font-family: 'DM Sans', sans-serif;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            width: 100%;
-            max-width: 400px;
-        }
-        
-        .cta-btn:hover {
-            background: var(--gold-light);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(201,168,76,0.3);
-        }
-        
-        .cta-btn-dark {
-            background: var(--navy);
-            color: var(--gold);
-            border: 2px solid var(--gold);
-        }
-        
-        .cta-btn-dark:hover {
-            background: var(--gold);
-            color: var(--navy);
-        }
-        
+        .cta-btn{display:inline-block;padding:18px 50px;background:var(--gold);color:var(--navy);font-size:1.1rem;font-weight:700;font-family:'DM Sans',sans-serif;border:none;border-radius:50px;cursor:pointer;text-decoration:none;transition:all .3s ease;width:100%;max-width:400px}
+        .cta-btn:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 10px 30px rgba(201,168,76,.3)}
+        .cta-btn:disabled{opacity:.6;cursor:not-allowed;transform:none;box-shadow:none}
+        .cta-btn-dark{background:var(--navy);color:var(--gold);border:2px solid var(--gold)}
+        .cta-btn-dark:hover{background:var(--gold);color:var(--navy)}
+
         /* POUSADA DETAILS */
-        .pousada-details {
-            padding: 60px 20px;
-            background: linear-gradient(135deg, #0D1D33, #0A1628);
-            text-align: center;
-            display: none;
-        }
-        
-        .pousada-details.active { display: block; }
-        
-        .pousada-details h3 {
-            color: var(--gold);
-            font-size: 1.6rem;
-            margin-bottom: 25px;
-        }
-        
-        .amenities {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-        
-        .amenity {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(201,168,76,0.2);
-            border-radius: 12px;
-            padding: 20px;
-            min-width: 140px;
-            text-align: center;
-        }
-        
-        .amenity-icon { font-size: 2rem; margin-bottom: 8px; }
-        .amenity-text { font-size: 0.85rem; opacity: 0.8; }
-        
-        /* MATH */
-        .math-box {
-            max-width: 500px;
-            margin: 30px auto;
-            background: rgba(201,168,76,0.1);
-            border-radius: 16px;
-            padding: 30px;
-            text-align: left;
-        }
-        
-        .math-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .math-row:last-child { border: none; }
-        .math-row .label { opacity: 0.8; }
-        .math-row .value { color: var(--gold); font-weight: 600; }
-        .math-row.total { font-size: 1.2rem; padding-top: 15px; }
-        .math-row.total .value { font-size: 1.4rem; }
-        
+        .pousada-details{padding:60px 20px;background:linear-gradient(135deg,#0D1D33,#0A1628);text-align:center;display:none}
+        .pousada-details.active{display:block}
+        .pousada-details h3{color:var(--gold);font-size:1.6rem;margin-bottom:25px}
+        .amenities{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;max-width:700px;margin:0 auto 30px}
+        .amenity{background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.2);border-radius:12px;padding:20px;min-width:140px;text-align:center}
+        .amenity-icon{font-size:2rem;margin-bottom:8px}
+        .amenity-text{font-size:.85rem;opacity:.8}
+        .math-box{max-width:500px;margin:30px auto;background:rgba(201,168,76,.1);border-radius:16px;padding:30px;text-align:left}
+        .math-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+        .math-row:last-child{border:none}
+        .math-row .label{opacity:.8}
+        .math-row .value{color:var(--gold);font-weight:600}
+        .math-row.total{font-size:1.2rem;padding-top:15px}
+        .math-row.total .value{font-size:1.4rem}
+
         /* URGENCY */
-        .urgency-bar {
-            background: var(--gold);
-            color: var(--navy);
-            text-align: center;
-            padding: 12px 20px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
+        .urgency-bar{background:var(--gold);color:var(--navy);text-align:center;padding:12px 20px;font-weight:700;font-size:.95rem;position:sticky;top:0;z-index:100}
+
         /* FOOTER */
-        footer {
-            padding: 40px 20px;
-            background: #060E1A;
-            text-align: center;
-            font-size: 0.85rem;
-            opacity: 0.5;
-        }
-        
+        footer{padding:40px 20px;background:#060E1A;text-align:center;font-size:.85rem;opacity:.5}
+
         /* RESPONSIVE */
-        @media (max-width: 600px) {
-            .choices { flex-direction: column; align-items: center; }
-            .package-grid { flex-direction: column; align-items: center; }
-            .hero { padding: 30px 15px; }
-        }
+        @media(max-width:600px){.choices,.package-grid{flex-direction:column;align-items:center}.hero{padding:30px 15px}}
     </style>
 </head>
 <body>
@@ -456,15 +147,13 @@
     <section class="choice-section" id="escolha">
         <h2>Escolha seu presente</h2>
         <p>Clique na opção que mais te interessa</p>
-        
         <div class="choices">
-            <div class="choice-card" onclick="selectChoice('pousada')">
+            <div class="choice-card" onclick="selectChoice('pousada', this)">
                 <div class="choice-emoji">🏖️</div>
                 <h3>1 semana por ano VITALÍCIA</h3>
                 <p>Pousada completa em Olímpia/SP — a cidade com um dos maiores parques aquáticos do mundo. Piscinas, churrasqueira, quartos com ar-condicionado.</p>
             </div>
-            
-            <div class="choice-card" onclick="selectChoice('gestao')">
+            <div class="choice-card" onclick="selectChoice('gestao', this)">
                 <div class="choice-emoji">📊</div>
                 <h3>1 ano de gestão empresarial completa</h3>
                 <p>Contabilidade, jurídico, marketing digital, CRM, banco digital e mais 10 soluções integradas com inteligência artificial.</p>
@@ -472,57 +161,23 @@
         </div>
     </section>
 
-    <!-- POUSADA DETAILS (appears after gestão choice) -->
+    <!-- POUSADA DETAILS (aparece quando escolhe gestão) -->
     <section class="pousada-details" id="pousada-details">
         <h3>Você escolheu gestão — ótimo gosto! Mas sabia que...</h3>
         <div class="amenities">
-            <div class="amenity">
-                <div class="amenity-icon">🏊</div>
-                <div class="amenity-text">2 Piscinas</div>
-            </div>
-            <div class="amenity">
-                <div class="amenity-icon">🥩</div>
-                <div class="amenity-text">4 Quiosques com churrasqueira</div>
-            </div>
-            <div class="amenity">
-                <div class="amenity-icon">❄️</div>
-                <div class="amenity-text">Ar-condicionado em todos os quartos</div>
-            </div>
-            <div class="amenity">
-                <div class="amenity-icon">🧊</div>
-                <div class="amenity-text">Frigobar exclusivo</div>
-            </div>
-            <div class="amenity">
-                <div class="amenity-icon">🚿</div>
-                <div class="amenity-text">Banheiros privativos</div>
-            </div>
-            <div class="amenity">
-                <div class="amenity-icon">🎢</div>
-                <div class="amenity-text">Olímpia: capital do turismo</div>
-            </div>
+            <div class="amenity"><div class="amenity-icon">🏊</div><div class="amenity-text">2 Piscinas</div></div>
+            <div class="amenity"><div class="amenity-icon">🥩</div><div class="amenity-text">4 Quiosques com churrasqueira</div></div>
+            <div class="amenity"><div class="amenity-icon">❄️</div><div class="amenity-text">Ar-condicionado em todos os quartos</div></div>
+            <div class="amenity"><div class="amenity-icon">🧊</div><div class="amenity-text">Frigobar exclusivo</div></div>
+            <div class="amenity"><div class="amenity-icon">🚿</div><div class="amenity-text">Banheiros privativos</div></div>
+            <div class="amenity"><div class="amenity-icon">🎢</div><div class="amenity-text">Olímpia: capital do turismo</div></div>
         </div>
-        
         <div class="math-box">
-            <div class="math-row">
-                <span class="label">Diária média fim de semana em Olímpia</span>
-                <span class="value">R$ 400</span>
-            </div>
-            <div class="math-row">
-                <span class="label">1 semana por ano (7 diárias)</span>
-                <span class="value">R$ 2.800/ano</span>
-            </div>
-            <div class="math-row">
-                <span class="label">10 anos de uso</span>
-                <span class="value">R$ 28.000</span>
-            </div>
-            <div class="math-row">
-                <span class="label">1 ano de gestão FBS (12 meses)</span>
-                <span class="value">R$ 5.988</span>
-            </div>
-            <div class="math-row total">
-                <span class="label">Valor total do pacote</span>
-                <span class="value">R$ 33.988</span>
-            </div>
+            <div class="math-row"><span class="label">Diária média fim de semana em Olímpia</span><span class="value">R$ 400</span></div>
+            <div class="math-row"><span class="label">1 semana por ano (7 diárias)</span><span class="value">R$ 2.800/ano</span></div>
+            <div class="math-row"><span class="label">10 anos de uso</span><span class="value">R$ 28.000</span></div>
+            <div class="math-row"><span class="label">1 ano de gestão FBS (12 meses)</span><span class="value">R$ 5.988</span></div>
+            <div class="math-row total"><span class="label">Valor total do pacote</span><span class="value">R$ 33.988</span></div>
         </div>
     </section>
 
@@ -530,7 +185,6 @@
     <section class="reveal" id="reveal">
         <h2>Boa notícia: <span>você não precisa escolher.</span></h2>
         <p>Hoje você leva os DOIS presentes por uma condição que não vai se repetir.</p>
-        
         <div class="package-grid">
             <div class="package-item">
                 <h3>🏖️ Cota Recanto das Águas</h3>
@@ -543,7 +197,6 @@
                     <li>Valorização de +167%</li>
                 </ul>
             </div>
-            
             <div class="package-item">
                 <h3>📊 Gestão FBS Completa (1 ano)</h3>
                 <ul>
@@ -556,7 +209,6 @@
                 </ul>
             </div>
         </div>
-        
         <div class="pricing-box">
             <div class="price-compare">De R$ 33.988 em valor real</div>
             <div class="price-main">R$ 3.000</div>
@@ -571,39 +223,42 @@
         <div class="form-container">
             <h2>Garanta sua vaga</h2>
             <p>Preencha seus dados e fale direto com nossa equipe</p>
-            
-            <form id="lead-form" onsubmit="submitForm(event)">
-                <div class="form-group">
-                    <label>Nome completo</label>
-                    <input type="text" id="nome" required placeholder="Seu nome">
+
+            <form id="lead-form" onsubmit="submitForm(event)" novalidate>
+                <div class="form-group" id="group-nome">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" placeholder="Seu nome" autocomplete="name">
+                    <span class="form-error" id="error-nome">Digite seu nome completo (mín. 3 caracteres)</span>
                 </div>
-                
-                <div class="form-group">
-                    <label>WhatsApp</label>
-                    <input type="tel" id="whatsapp" required placeholder="(00) 00000-0000">
+
+                <div class="form-group" id="group-whatsapp">
+                    <label for="whatsapp">WhatsApp</label>
+                    <input type="tel" id="whatsapp" placeholder="(00) 00000-0000" autocomplete="tel" maxlength="16">
+                    <span class="form-error" id="error-whatsapp">Informe um WhatsApp válido com DDD (11 dígitos)</span>
                 </div>
-                
-                <div class="form-group">
-                    <label>Você tem empresa?</label>
-                    <select id="empresa" required>
+
+                <div class="form-group" id="group-empresa">
+                    <label for="empresa">Você tem empresa?</label>
+                    <select id="empresa">
                         <option value="">Selecione</option>
                         <option value="sim-mei">Sim — MEI</option>
                         <option value="sim-me">Sim — ME/EPP</option>
                         <option value="sim-media">Sim — Média empresa</option>
                         <option value="nao">Não, mas quero abrir</option>
                     </select>
+                    <span class="form-error" id="error-empresa">Selecione uma opção</span>
                 </div>
-                
-                <div class="form-group">
-                    <label>O que te interessou mais?</label>
+
+                <div class="form-group" id="group-interesse">
+                    <label for="interesse">O que te interessou mais?</label>
                     <select id="interesse">
                         <option value="ambos">Os dois — cota + gestão</option>
                         <option value="cota">Mais a cota da pousada</option>
                         <option value="gestao">Mais a gestão empresarial</option>
                     </select>
                 </div>
-                
-                <button type="submit" class="cta-btn" style="margin-top: 10px;">
+
+                <button type="submit" class="cta-btn" id="submit-btn" style="margin-top:10px">
                     Falar com a equipe no WhatsApp →
                 </button>
             </form>
@@ -616,60 +271,207 @@
     </footer>
 
     <script>
-        let choiceMade = false;
-        
-        function selectChoice(type) {
-            document.querySelectorAll('.choice-card').forEach(c => c.classList.remove('selected'));
-            event.currentTarget.classList.add('selected');
-            
-            const reveal = document.getElementById('reveal');
-            const pousadaDetails = document.getElementById('pousada-details');
-            
-            if (type === 'gestao') {
-                pousadaDetails.classList.add('active');
-                setTimeout(() => {
-                    reveal.classList.add('active');
-                    setTimeout(() => {
-                        reveal.scrollIntoView({ behavior: 'smooth' });
-                    }, 300);
-                }, 2000);
-            } else {
-                pousadaDetails.classList.remove('active');
-                reveal.classList.add('active');
-                setTimeout(() => {
-                    reveal.scrollIntoView({ behavior: 'smooth' });
-                }, 300);
-            }
+    // ============================================================
+    // UTM TRACKING
+    // ============================================================
+    var _utms = (function() {
+        var p = new URLSearchParams(window.location.search);
+        return {
+            source:   p.get('utm_source')   || '',
+            medium:   p.get('utm_medium')   || '',
+            campaign: p.get('utm_campaign') || ''
+        };
+    })();
+
+    // ============================================================
+    // META PIXEL — eventos auxiliares
+    // ============================================================
+    function pixelTrack(event, params) {
+        if (typeof fbq === 'function') {
+            fbq('track', event, params || {});
         }
-        
-        function submitForm(e) {
-            e.preventDefault();
-            const nome = document.getElementById('nome').value;
-            const whatsapp = document.getElementById('whatsapp').value;
-            const empresa = document.getElementById('empresa').value;
-            const interesse = document.getElementById('interesse').value;
-            
-            // ALTERE O NÚMERO ABAIXO PARA O WHATSAPP DO NILTON
-            const telefone = '5516992755986';
-            const msg = encodeURIComponent(
-                `Olá! Me chamo ${nome}.\n` +
-                `Tenho interesse no pacote FBS + Cota Recanto das Águas.\n` +
-                `Empresa: ${empresa}\n` +
-                `Maior interesse: ${interesse}\n` +
-                `Meu WhatsApp: ${whatsapp}`
-            );
-            
-            window.open(`https://wa.me/${telefone}?text=${msg}`, '_blank');
+    }
+
+    // ============================================================
+    // TELEGRAM WEBHOOK
+    // ⚠️ NILTON: substitua SEU_TOKEN_COMPLETO pelo token do bot
+    //   Formato: 8651838209:AAFxxx...  (pegue no @BotFather → /token)
+    // ============================================================
+    var TELEGRAM_TOKEN = 'SEU_TOKEN_COMPLETO'; // ← SUBSTITUIR
+    var TELEGRAM_CHAT  = '996533875';
+
+    function sendTelegram(nome, whatsapp, empresa, interesse) {
+        var empresaMap = {
+            'sim-mei':   'MEI',
+            'sim-me':    'ME/EPP',
+            'sim-media': 'Média empresa',
+            'nao':       'Quer abrir empresa'
+        };
+        var interesseMap = {
+            'ambos':  'Cota + Gestão',
+            'cota':   'Cota da pousada',
+            'gestao': 'Gestão empresarial'
+        };
+
+        var msg = '🔥 Novo lead!\n\n'
+            + '👤 Nome: '      + nome + '\n'
+            + '📱 WhatsApp: '  + whatsapp + '\n'
+            + '🏢 Empresa: '   + (empresaMap[empresa]   || empresa)   + '\n'
+            + '💡 Interesse: ' + (interesseMap[interesse] || interesse);
+
+        if (_utms.source || _utms.medium || _utms.campaign) {
+            msg += '\n\n📊 Origem:';
+            if (_utms.source)   msg += '\n  Source: '   + _utms.source;
+            if (_utms.medium)   msg += '\n  Medium: '   + _utms.medium;
+            if (_utms.campaign) msg += '\n  Campaign: ' + _utms.campaign;
         }
-        
-        // WhatsApp mask
-        document.getElementById('whatsapp').addEventListener('input', function(e) {
-            let v = e.target.value.replace(/\D/g, '');
-            if (v.length > 11) v = v.slice(0, 11);
-            if (v.length > 7) v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
-            else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
-            e.target.value = v;
+
+        fetch('https://api.telegram.org/bot' + TELEGRAM_TOKEN + '/sendMessage', {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify({ chat_id: TELEGRAM_CHAT, text: msg })
+        }).catch(function() {}); // silencia erros de rede — não bloqueia o lead
+    }
+
+    // ============================================================
+    // CHOICE SELECTION + Meta Pixel ViewContent
+    // ============================================================
+    function selectChoice(type, el) {
+        document.querySelectorAll('.choice-card').forEach(function(c) {
+            c.classList.remove('selected');
         });
+        el.classList.add('selected');
+
+        // Pré-preenche o campo interesse no form
+        var sel = document.getElementById('interesse');
+        if (sel) sel.value = (type === 'pousada') ? 'cota' : 'gestao';
+
+        // Meta Pixel ViewContent
+        pixelTrack('ViewContent', { content_name: type === 'pousada' ? 'Cota Pousada' : 'Gestão FBS' });
+
+        var reveal        = document.getElementById('reveal');
+        var pousadaDets   = document.getElementById('pousada-details');
+
+        if (type === 'gestao') {
+            pousadaDets.classList.add('active');
+            setTimeout(function() {
+                reveal.classList.add('active');
+                setTimeout(function() { reveal.scrollIntoView({ behavior: 'smooth' }); }, 300);
+            }, 2000);
+        } else {
+            pousadaDets.classList.remove('active');
+            reveal.classList.add('active');
+            setTimeout(function() { reveal.scrollIntoView({ behavior: 'smooth' }); }, 300);
+        }
+    }
+
+    // ============================================================
+    // FORM VALIDATION
+    // ============================================================
+    function onlyDigits(str) { return str.replace(/\D/g, ''); }
+
+    function setFieldState(groupId, valid, show) {
+        var g = document.getElementById(groupId);
+        if (!show) { g.classList.remove('has-error','is-valid'); return; }
+        g.classList.toggle('has-error',  !valid);
+        g.classList.toggle('is-valid',    valid);
+    }
+
+    function validateNome() {
+        var val = document.getElementById('nome').value.trim();
+        var ok  = val.length >= 3;
+        setFieldState('group-nome', ok, true);
+        return ok;
+    }
+
+    function validateWhatsapp() {
+        var digits = onlyDigits(document.getElementById('whatsapp').value);
+        var ok     = digits.length === 11;
+        setFieldState('group-whatsapp', ok, true);
+        return ok;
+    }
+
+    function validateEmpresa() {
+        var val = document.getElementById('empresa').value;
+        var ok  = val !== '';
+        setFieldState('group-empresa', ok, true);
+        return ok;
+    }
+
+    // Live validation
+    document.getElementById('nome').addEventListener('blur', validateNome);
+    document.getElementById('whatsapp').addEventListener('blur', validateWhatsapp);
+    document.getElementById('empresa').addEventListener('change', validateEmpresa);
+
+    // WhatsApp mask
+    document.getElementById('whatsapp').addEventListener('input', function(e) {
+        var v = onlyDigits(e.target.value);
+        if (v.length > 11) v = v.slice(0, 11);
+        if      (v.length > 7) v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
+        else if (v.length > 2) v = '(' + v.slice(0,2) + ') ' + v.slice(2);
+        e.target.value = v;
+    });
+
+    // ============================================================
+    // FORM SUBMIT
+    // ============================================================
+    function submitForm(e) {
+        e.preventDefault();
+
+        var nomeOk     = validateNome();
+        var whatsappOk = validateWhatsapp();
+        var empresaOk  = validateEmpresa();
+
+        if (!nomeOk || !whatsappOk || !empresaOk) return;
+
+        // Desabilita botão (anti-double-click)
+        var btn = document.getElementById('submit-btn');
+        btn.disabled = true;
+        btn.textContent = 'Abrindo WhatsApp...';
+
+        var nome      = document.getElementById('nome').value.trim();
+        var whatsapp  = document.getElementById('whatsapp').value.trim();
+        var empresa   = document.getElementById('empresa').value;
+        var interesse = document.getElementById('interesse').value;
+
+        // Meta Pixel Lead
+        pixelTrack('Lead', { content_name: interesse });
+
+        // Telegram notification (fire & forget)
+        sendTelegram(nome, whatsapp, empresa, interesse);
+
+        // Monta mensagem WhatsApp com UTMs
+        var utmInfo = '';
+        if (_utms.source || _utms.medium || _utms.campaign) {
+            utmInfo = '\n[origem: ' + [_utms.source, _utms.medium, _utms.campaign].filter(Boolean).join(' / ') + ']';
+        }
+
+        var empresaLabels = {
+            'sim-mei': 'MEI', 'sim-me': 'ME/EPP',
+            'sim-media': 'Média empresa', 'nao': 'Quero abrir empresa'
+        };
+        var interesseLabels = {
+            'ambos': 'Cota + Gestão', 'cota': 'Cota da pousada', 'gestao': 'Gestão empresarial'
+        };
+
+        var msg = encodeURIComponent(
+            'Olá! Me chamo ' + nome + '.\n'
+            + 'Tenho interesse no pacote FBS + Cota Recanto das Águas.\n'
+            + 'Empresa: ' + (empresaLabels[empresa] || empresa) + '\n'
+            + 'Maior interesse: ' + (interesseLabels[interesse] || interesse) + '\n'
+            + 'Meu WhatsApp: ' + whatsapp
+            + utmInfo
+        );
+
+        setTimeout(function() {
+            window.open('https://wa.me/5516992755986?text=' + msg, '_blank');
+            // Re-habilita após 3s (caso o usuário queira reenviar)
+            setTimeout(function() {
+                btn.disabled = false;
+                btn.textContent = 'Falar com a equipe no WhatsApp →';
+            }, 3000);
+        }, 300);
+    }
     </script>
 
 </body>
