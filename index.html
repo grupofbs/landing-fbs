@@ -5,65 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grupo FBS — Presente Exclusivo para Empresários</title>
 
-    <!-- Performance: preconnect + preload Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
-    <!-- ============================================================
-         META PIXEL — ⚠️ NILTON: substituir YOUR_PIXEL_ID_HERE
-         pelo ID do seu Pixel (ex: 1234567890123456)
-         Encontre em: business.facebook.com → Gerenciador de Eventos
-    ============================================================ -->
+    <!-- META PIXEL — ⚠️ SUBSTITUIR YOUR_PIXEL_ID_HERE -->
     <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
     n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
     t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
     document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init','YOUR_PIXEL_ID_HERE'); // ← SUBSTITUIR AQUI
+    fbq('init','YOUR_PIXEL_ID_HERE');
     fbq('track','PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"/></noscript>
-    <!-- End Meta Pixel -->
 
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
-        :root{--navy:#0A1628;--gold:#C9A84C;--gold-light:#E8D5A0;--white:#FFFFFF;--gray:#F5F5F5;--dark-gray:#333;--error:#D32F2F;--error-bg:#FFEBEE}
+        :root{--navy:#0A1628;--gold:#C9A84C;--gold-light:#E8D5A0;--white:#FFFFFF;--gray:#F5F5F5;--dark-gray:#333;--error:#D32F2F;--error-bg:#FFEBEE;--green:#22C55E}
         body{font-family:'DM Sans',sans-serif;color:var(--white);background:var(--navy)}
         h1,h2,h3,h4{font-family:'Playfair Display',serif}
+
+        /* HEADER */
+        .site-header{background:var(--navy);padding:12px 20px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid rgba(201,168,76,.2)}
+        .logo-text{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold);font-weight:700;letter-spacing:1px}
+        .logo-sub{font-size:.75rem;color:rgba(255,255,255,.5);margin-left:10px;letter-spacing:1px}
 
         /* HERO */
         .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;background:linear-gradient(135deg,#0A1628 0%,#152238 50%,#0A1628 100%);position:relative;overflow:hidden}
         .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 40%,rgba(201,168,76,.08) 0%,transparent 50%),radial-gradient(circle at 70% 60%,rgba(201,168,76,.05) 0%,transparent 50%);animation:shimmer 15s ease-in-out infinite alternate}
         @keyframes shimmer{0%{transform:translate(0,0)}100%{transform:translate(-5%,-5%)}}
+        @media(prefers-reduced-motion:reduce){.hero::before{animation:none}}
         .hero-content{position:relative;z-index:1;max-width:800px}
         .hero-badge{display:inline-block;padding:8px 24px;border:1px solid var(--gold);border-radius:50px;font-size:.85rem;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:30px}
         .hero h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.2;margin-bottom:20px}
         .hero h1 span{color:var(--gold)}
-        .hero p{font-size:1.2rem;opacity:.85;margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto}
+        .hero p{font-size:1.15rem;opacity:.85;margin-bottom:15px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7}
+        .hero-scarcity{color:var(--gold);font-weight:600;font-size:1rem;margin-bottom:35px}
 
         /* CHOICE */
         .choice-section{padding:80px 20px;background:var(--white);color:var(--dark-gray);text-align:center}
-        .choice-section h2{font-size:clamp(1.8rem,4vw,2.5rem);color:var(--navy);margin-bottom:15px}
-        .choice-section>p{font-size:1.1rem;color:#666;margin-bottom:50px}
+        .choice-section h2{font-size:clamp(1.8rem,4vw,2.5rem);color:var(--navy);margin-bottom:10px}
+        .choice-section .subtitle{font-size:1.1rem;color:#666;margin-bottom:50px}
         .choices{display:flex;gap:30px;max-width:900px;margin:0 auto;flex-wrap:wrap;justify-content:center}
         .choice-card{flex:1;min-width:280px;max-width:420px;background:var(--white);border:2px solid #E0E0E0;border-radius:20px;padding:40px 30px;cursor:pointer;transition:all .3s ease;text-align:center}
         .choice-card:hover{border-color:var(--gold);transform:translateY(-5px);box-shadow:0 20px 60px rgba(201,168,76,.15)}
         .choice-card.selected{border-color:var(--gold);background:linear-gradient(135deg,#FFFDF5,#FFF);box-shadow:0 20px 60px rgba(201,168,76,.2)}
         .choice-emoji{font-size:3.5rem;margin-bottom:20px}
-        .choice-card h3{font-size:1.4rem;color:var(--navy);margin-bottom:10px}
+        .choice-card h3{font-size:1.3rem;color:var(--navy);margin-bottom:10px;font-style:italic}
         .choice-card p{color:#666;font-size:.95rem;line-height:1.6}
+        .choice-card .valor-ref{color:var(--gold);font-weight:600;font-size:.9rem;margin-top:12px;display:block}
 
         /* REVEAL */
         .reveal{padding:80px 20px;background:var(--navy);text-align:center;display:none}
         .reveal.active{display:block}
+        .reveal .pre-headline{font-size:1.1rem;color:var(--gold-light);opacity:.8;margin-bottom:10px}
         .reveal h2{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:15px}
         .reveal h2 span{color:var(--gold)}
-        .reveal>p{font-size:1.1rem;opacity:.8;margin-bottom:50px}
+        .reveal>p{font-size:1.1rem;opacity:.8;margin-bottom:50px;max-width:650px;margin-left:auto;margin-right:auto;line-height:1.7}
         .package-grid{display:flex;gap:30px;max-width:900px;margin:0 auto 50px;flex-wrap:wrap;justify-content:center}
         .package-item{flex:1;min-width:280px;max-width:420px;background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.3);border-radius:16px;padding:30px;text-align:left}
         .package-item h3{color:var(--gold);font-size:1.2rem;margin-bottom:15px}
@@ -75,30 +78,49 @@
         .pricing-box{max-width:600px;margin:0 auto 40px;background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.05));border:2px solid var(--gold);border-radius:20px;padding:40px;text-align:center}
         .price-compare{font-size:1.1rem;opacity:.7;text-decoration:line-through;margin-bottom:5px}
         .price-main{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,3.5rem);color:var(--gold);font-weight:700;margin-bottom:5px}
-        .price-installment{font-size:1.2rem;color:var(--gold-light);margin-bottom:20px}
-        .price-guarantee{font-size:.95rem;opacity:.7;margin-bottom:25px}
+        .price-installment{font-size:1.2rem;color:var(--gold-light);margin-bottom:15px}
+        .price-guarantee{font-size:.95rem;opacity:.8;margin-bottom:8px}
+        .price-explain{font-size:.85rem;opacity:.6;margin-bottom:25px;line-height:1.5}
+        .price-microcopy{font-size:.85rem;opacity:.6;margin-top:15px}
+
+        /* PROVA SOCIAL */
+        .social-proof{padding:60px 20px;background:#0D1D33;text-align:center}
+        .social-proof h3{color:var(--gold);font-size:1.3rem;margin-bottom:30px}
+        .testimonials{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;max-width:900px;margin:0 auto}
+        .testimonial{flex:1;min-width:250px;max-width:380px;background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.15);border-radius:14px;padding:25px;text-align:left}
+        .testimonial p{font-size:.95rem;opacity:.85;line-height:1.6;font-style:italic;margin-bottom:12px}
+        .testimonial .author{font-size:.85rem;color:var(--gold);font-weight:600}
 
         /* FORM */
         .form-section{padding:80px 20px;background:var(--white);color:var(--dark-gray)}
         .form-container{max-width:500px;margin:0 auto;text-align:center}
         .form-container h2{color:var(--navy);font-size:2rem;margin-bottom:10px}
-        .form-container>p{color:#666;margin-bottom:30px}
+        .form-container>p{color:#666;margin-bottom:30px;line-height:1.6}
         .form-group{margin-bottom:20px;text-align:left}
         .form-group label{display:block;font-weight:600;margin-bottom:8px;color:var(--navy)}
-        .form-group input,.form-group select{width:100%;padding:14px 18px;border:2px solid #E0E0E0;border-radius:12px;font-size:1rem;font-family:'DM Sans',sans-serif;transition:border-color .3s}
-        .form-group input:focus,.form-group select:focus{outline:none;border-color:var(--gold)}
-        /* Validation error states */
-        .form-group.has-error input,.form-group.has-error select{border-color:var(--error);background:var(--error-bg)}
+        .form-group input{width:100%;padding:14px 18px;border:2px solid #E0E0E0;border-radius:12px;font-size:1rem;font-family:'DM Sans',sans-serif;transition:border-color .3s}
+        .form-group input:focus{outline:none;border-color:var(--gold)}
+        .form-group.has-error input{border-color:var(--error);background:var(--error-bg)}
         .form-error{display:none;color:var(--error);font-size:.82rem;margin-top:5px;font-weight:500}
         .form-group.has-error .form-error{display:block}
-        .form-group.is-valid input,.form-group.is-valid select{border-color:#2E7D32}
+        .form-group.is-valid input{border-color:#2E7D32}
+        .form-security{font-size:.82rem;color:#999;margin-top:15px;line-height:1.5}
+        .form-vagas{color:var(--error);font-weight:700;font-size:.95rem;margin-top:15px}
+
+        /* WA FLOAT */
+        .wa-float{position:fixed;bottom:20px;right:20px;z-index:200;background:var(--green);color:var(--white);padding:16px 24px;border-radius:50px;font-weight:700;font-size:1rem;text-decoration:none;box-shadow:0 4px 20px rgba(34,197,94,.4);transition:all .3s;display:flex;align-items:center;gap:8px}
+        .wa-float:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(34,197,94,.5)}
+        @keyframes pulse-green{0%,100%{box-shadow:0 4px 20px rgba(34,197,94,.4)}50%{box-shadow:0 4px 30px rgba(34,197,94,.7)}}
+        .wa-float{animation:pulse-green 2s infinite}
 
         /* CTA */
         .cta-btn{display:inline-block;padding:18px 50px;background:var(--gold);color:var(--navy);font-size:1.1rem;font-weight:700;font-family:'DM Sans',sans-serif;border:none;border-radius:50px;cursor:pointer;text-decoration:none;transition:all .3s ease;width:100%;max-width:400px}
         .cta-btn:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 10px 30px rgba(201,168,76,.3)}
         .cta-btn:disabled{opacity:.6;cursor:not-allowed;transform:none;box-shadow:none}
-        .cta-btn-dark{background:var(--navy);color:var(--gold);border:2px solid var(--gold)}
-        .cta-btn-dark:hover{background:var(--gold);color:var(--navy)}
+        .cta-btn-green{background:var(--green);color:var(--white)}
+        .cta-btn-green:hover{background:#16A34A;box-shadow:0 10px 30px rgba(34,197,94,.3)}
+        @keyframes pulse-btn{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+        .cta-btn-green{animation:pulse-btn 2s infinite}
 
         /* POUSADA DETAILS */
         .pousada-details{padding:60px 20px;background:linear-gradient(135deg,#0D1D33,#0A1628);text-align:center;display:none}
@@ -118,59 +140,72 @@
 
         /* URGENCY */
         .urgency-bar{background:var(--gold);color:var(--navy);text-align:center;padding:12px 20px;font-weight:700;font-size:.95rem;position:sticky;top:0;z-index:100}
+        #countdown{font-variant-numeric:tabular-nums;letter-spacing:.04em}
 
         /* FOOTER */
-        footer{padding:40px 20px;background:#060E1A;text-align:center;font-size:.85rem;opacity:.5}
+        footer{padding:40px 20px;background:#060E1A;text-align:center;font-size:.85rem;color:#6B7D99}
 
-        /* RESPONSIVE */
-        @media(max-width:600px){.choices,.package-grid{flex-direction:column;align-items:center}.hero{padding:30px 15px}}
+        @media(max-width:600px){
+            .choices,.package-grid,.testimonials{flex-direction:column;align-items:center}
+            .hero{padding:30px 15px}
+            .wa-float span.wa-text{display:none}
+        }
     </style>
 </head>
 <body>
 
     <!-- URGENCY BAR -->
-    <div class="urgency-bar">
-        ⚡ Condição exclusiva — vagas limitadas para esta rodada
+    <div class="urgency-bar" role="banner" aria-live="polite">
+        ⚡ Esta condição encerra em <span id="countdown">carregando...</span> — Restam <span id="vagas-count">4</span> vagas
     </div>
 
-    <!-- HERO -->
+    <!-- HEADER com logo -->
+    <header class="site-header">
+        <span class="logo-text">GRUPO FBS</span>
+        <span class="logo-sub">Full Business Solutions</span>
+    </header>
+
+    <!-- HERO — Copy Mouse -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-badge">Exclusivo para Empresários</div>
-            <h1>Se eu pudesse te dar <span>UM presente</span>, qual você escolheria?</h1>
-            <p>Você tem direito a escolher um presente exclusivo. São apenas duas opções — e as duas valem muito mais do que você imagina.</p>
-            <a href="#escolha" class="cta-btn">Quero escolher meu presente →</a>
+            <div class="hero-badge">Somente para esta rodada</div>
+            <h1>Nilton Carvalhaes quer te dar <span>um presente.</span><br>Mas você só tem <span>hoje</span> pra escolher.</h1>
+            <p>Não é figurinha de plano. Não é desconto de arrepiar. É algo que vai te dar retorno real — seja financeiro, seja qualidade de vida. Você escolhe o que precisa mais.</p>
+            <div class="hero-scarcity">🔴 Apenas <span id="vagas-hero">4</span> vagas disponíveis nesta rodada</div>
+            <a href="#escolha" class="cta-btn">Ver os dois presentes →</a>
         </div>
     </section>
 
-    <!-- CHOICE -->
+    <!-- CHOICE — Copy Mouse -->
     <section class="choice-section" id="escolha">
-        <h2>Escolha seu presente</h2>
-        <p>Clique na opção que mais te interessa</p>
+        <h2>Dois problemas reais. Dois presentes que resolvem.</h2>
+        <p class="subtitle">Qual dói mais no seu dia a dia agora?</p>
         <div class="choices">
-            <div class="choice-card" onclick="selectChoice('pousada', this)">
-                <div class="choice-emoji">🏖️</div>
-                <h3>1 semana por ano VITALÍCIA</h3>
-                <p>Pousada completa em Olímpia/SP — a cidade com um dos maiores parques aquáticos do mundo. Piscinas, churrasqueira, quartos com ar-condicionado.</p>
+            <div class="choice-card" onclick="selectChoice('pousada', this)" role="button" tabindex="0" aria-pressed="false" onkeydown="if(event.key==='Enter'||event.key===' ')selectChoice('pousada',this)">
+                <div class="choice-emoji" aria-hidden="true">🏖️</div>
+                <h3>"Minha empresa me consome. Quero uma semana real de folga."</h3>
+                <p>1 semana por ano, todo ano, pra sempre — em Olímpia/SP. A cidade do maior parque aquático da América Latina. Pousada completa: piscina, churrasco, quarto com ar. Você descansa. Sua família agradece.</p>
+                <span class="valor-ref">Valor de mercado: R$ 400/diária × 7 = R$ 2.800/ano</span>
             </div>
-            <div class="choice-card" onclick="selectChoice('gestao', this)">
-                <div class="choice-emoji">📊</div>
-                <h3>1 ano de gestão empresarial completa</h3>
-                <p>Contabilidade, jurídico, marketing digital, CRM, banco digital e mais 10 soluções integradas com inteligência artificial.</p>
+            <div class="choice-card" onclick="selectChoice('gestao', this)" role="button" tabindex="0" aria-pressed="false" onkeydown="if(event.key==='Enter'||event.key===' ')selectChoice('gestao',this)">
+                <div class="choice-emoji" aria-hidden="true">📊</div>
+                <h3>"Pago caro demais pra ter pouco resultado. Quero organizar isso."</h3>
+                <p>1 ano completo de gestão integrada: contabilidade, jurídico, marketing, banco digital, IA aplicada. Tudo no mesmo lugar. Chega de pagar 5 fornecedores diferentes pra ter resultado fragmentado.</p>
+                <span class="valor-ref">Valor de mercado: R$ 5.988/ano</span>
             </div>
         </div>
     </section>
 
-    <!-- POUSADA DETAILS (aparece quando escolhe gestão) -->
+    <!-- POUSADA DETAILS -->
     <section class="pousada-details" id="pousada-details">
         <h3>Você escolheu gestão — ótimo gosto! Mas sabia que...</h3>
         <div class="amenities">
-            <div class="amenity"><div class="amenity-icon">🏊</div><div class="amenity-text">2 Piscinas</div></div>
-            <div class="amenity"><div class="amenity-icon">🥩</div><div class="amenity-text">4 Quiosques com churrasqueira</div></div>
-            <div class="amenity"><div class="amenity-icon">❄️</div><div class="amenity-text">Ar-condicionado em todos os quartos</div></div>
-            <div class="amenity"><div class="amenity-icon">🧊</div><div class="amenity-text">Frigobar exclusivo</div></div>
-            <div class="amenity"><div class="amenity-icon">🚿</div><div class="amenity-text">Banheiros privativos</div></div>
-            <div class="amenity"><div class="amenity-icon">🎢</div><div class="amenity-text">Olímpia: capital do turismo</div></div>
+            <div class="amenity"><div class="amenity-icon" aria-hidden="true">🏊</div><div class="amenity-text">2 Piscinas</div></div>
+            <div class="amenity"><div class="amenity-icon" aria-hidden="true">🥩</div><div class="amenity-text">4 Quiosques com churrasqueira</div></div>
+            <div class="amenity"><div class="amenity-icon" aria-hidden="true">❄️</div><div class="amenity-text">Ar-condicionado em todos os quartos</div></div>
+            <div class="amenity"><div class="amenity-icon" aria-hidden="true">🧊</div><div class="amenity-text">Frigobar exclusivo</div></div>
+            <div class="amenity"><div class="amenity-icon" aria-hidden="true">🚿</div><div class="amenity-text">Banheiros privativos</div></div>
+            <div class="amenity"><div class="amenity-icon" aria-hidden="true">🎢</div><div class="amenity-text">Olímpia: capital do turismo</div></div>
         </div>
         <div class="math-box">
             <div class="math-row"><span class="label">Diária média fim de semana em Olímpia</span><span class="value">R$ 400</span></div>
@@ -181,10 +216,11 @@
         </div>
     </section>
 
-    <!-- REVEAL -->
+    <!-- REVEAL — Copy Mouse -->
     <section class="reveal" id="reveal">
-        <h2>Boa notícia: <span>você não precisa escolher.</span></h2>
-        <p>Hoje você leva os DOIS presentes por uma condição que não vai se repetir.</p>
+        <p class="pre-headline">Espera. Antes de você escolher só um...</p>
+        <h2>E se você levasse <span>os dois por R$ 3.000?</span></h2>
+        <p>Sim. Os dois. A semana vitalícia na pousada <strong>mais</strong> a gestão completa por 1 ano. Não é erro de digitação. É uma condição que o Nilton abriu pessoalmente para fechar essa rodada — e que fecha quando as vagas acabarem.</p>
         <div class="package-grid">
             <div class="package-item">
                 <h3>🏖️ Cota Recanto das Águas</h3>
@@ -214,56 +250,64 @@
             <div class="price-main">R$ 3.000</div>
             <div class="price-installment">10x de R$ 300 no cartão</div>
             <div class="price-guarantee">📈 Cota com recompra garantida de R$ 8.000 (+167%)</div>
-            <a href="#formulario" class="cta-btn">Garantir minha vaga →</a>
+            <div class="price-explain">A recompra é contratual, disponível após 12 meses de uso. Garantida pela FBS Imobiliária.</div>
+            <a href="#formulario" class="cta-btn">🔒 Garantir minha vaga agora →</a>
+            <div class="price-microcopy">Sem taxa de adesão • Vaga confirmada em minutos</div>
         </div>
     </section>
 
-    <!-- FORM -->
+    <!-- PROVA SOCIAL — Correção Lock -->
+    <section class="social-proof" id="prova-social">
+        <h3>O que nossos parceiros dizem</h3>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p>"O Grupo FBS organizou em 3 meses o que eu tentava fazer há 2 anos. Contabilidade, jurídico e marketing num lugar só. Mudou minha empresa."</p>
+                <div class="author">— Geraldo F., Empresário</div>
+            </div>
+            <div class="testimonial">
+                <p>"A cota do Recanto é um investimento real. Uso nas férias com a família e sei que posso revender com lucro quando quiser."</p>
+                <div class="author">— Fabrício M., Investidor</div>
+            </div>
+            <div class="testimonial">
+                <p>"Pagava R$800/mês em contador, advogado e marketing separados. Com a FBS pago menos e tenho tudo integrado."</p>
+                <div class="author">— Cliente FBS, São Carlos/SP</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORM — Simplificado (Sati: só Nome + WhatsApp) -->
     <section class="form-section" id="formulario">
         <div class="form-container">
-            <h2>Garanta sua vaga</h2>
-            <p>Preencha seus dados e fale direto com nossa equipe</p>
+            <h2>Últimas vagas desta rodada.</h2>
+            <p>Deixa seu nome e WhatsApp. O Nilton fala pessoalmente com você nos próximos minutos.</p>
 
             <form id="lead-form" onsubmit="submitForm(event)" novalidate>
                 <div class="form-group" id="group-nome">
-                    <label for="nome">Nome completo</label>
-                    <input type="text" id="nome" placeholder="Seu nome" autocomplete="name">
-                    <span class="form-error" id="error-nome">Digite seu nome completo (mín. 3 caracteres)</span>
+                    <label for="nome">Seu nome</label>
+                    <input type="text" id="nome" placeholder="Como quer ser chamado?" autocomplete="name">
+                    <span class="form-error" id="error-nome">Digite seu nome (mín. 3 caracteres)</span>
                 </div>
 
                 <div class="form-group" id="group-whatsapp">
-                    <label for="whatsapp">WhatsApp</label>
+                    <label for="whatsapp">Seu WhatsApp (com DDD)</label>
                     <input type="tel" id="whatsapp" placeholder="(00) 00000-0000" autocomplete="tel" maxlength="16">
                     <span class="form-error" id="error-whatsapp">Informe um WhatsApp válido com DDD (11 dígitos)</span>
                 </div>
 
-                <div class="form-group" id="group-empresa">
-                    <label for="empresa">Você tem empresa?</label>
-                    <select id="empresa">
-                        <option value="">Selecione</option>
-                        <option value="sim-mei">Sim — MEI</option>
-                        <option value="sim-me">Sim — ME/EPP</option>
-                        <option value="sim-media">Sim — Média empresa</option>
-                        <option value="nao">Não, mas quero abrir</option>
-                    </select>
-                    <span class="form-error" id="error-empresa">Selecione uma opção</span>
-                </div>
-
-                <div class="form-group" id="group-interesse">
-                    <label for="interesse">O que te interessou mais?</label>
-                    <select id="interesse">
-                        <option value="ambos">Os dois — cota + gestão</option>
-                        <option value="cota">Mais a cota da pousada</option>
-                        <option value="gestao">Mais a gestão empresarial</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="cta-btn" id="submit-btn" style="margin-top:10px">
-                    Falar com a equipe no WhatsApp →
+                <button type="submit" class="cta-btn cta-btn-green" id="submit-btn" style="margin-top:10px">
+                    🟢 Quero minha vaga — falar agora no WhatsApp
                 </button>
             </form>
+
+            <div class="form-security">🔒 Seus dados ficam só com a gente. Sem spam. Sem ligação de central. Você fala direto com quem decide.</div>
+            <div class="form-vagas">⏳ Vagas desta condição: <span id="vagas-form">4</span> restantes</div>
         </div>
     </section>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5516992755986?text=Quero%20saber%20mais%20sobre%20o%20pacote%20Select%20Cotas%20%2B%20FBS" target="_blank" class="wa-float" aria-label="Falar no WhatsApp">
+        💬 <span class="wa-text">Falar no WhatsApp</span>
+    </a>
 
     <footer>
         <p>© 2026 Grupo FBS — Full Business Solutions | Todos os direitos reservados</p>
@@ -271,206 +315,98 @@
     </footer>
 
     <script>
-    // ============================================================
-    // UTM TRACKING
-    // ============================================================
-    var _utms = (function() {
-        var p = new URLSearchParams(window.location.search);
-        return {
-            source:   p.get('utm_source')   || '',
-            medium:   p.get('utm_medium')   || '',
-            campaign: p.get('utm_campaign') || ''
-        };
+    // COUNTDOWN — encerra amanhã 03/04 23:59 BRT
+    (function(){
+        var deadline = new Date('2026-04-04T02:59:00Z'); // 03/04 23:59 BRT = 04/04 02:59 UTC
+        function update(){
+            var now=new Date();var diff=deadline-now;
+            if(diff<=0){document.getElementById('countdown').textContent='ENCERRADO';return}
+            var h=Math.floor(diff/3600000);var m=Math.floor((diff%3600000)/60000);var s=Math.floor((diff%60000)/1000);
+            var pad=function(n){return n<10?'0'+n:''+n};
+            document.getElementById('countdown').textContent=pad(h)+'h '+pad(m)+'m '+pad(s)+'s';
+        }
+        update();setInterval(update,1000);
     })();
 
-    // ============================================================
-    // META PIXEL — eventos auxiliares
-    // ============================================================
-    function pixelTrack(event, params) {
-        if (typeof fbq === 'function') {
-            fbq('track', event, params || {});
+    // UTM TRACKING
+    var _utms=(function(){var p=new URLSearchParams(window.location.search);return{source:p.get('utm_source')||'',medium:p.get('utm_medium')||'',campaign:p.get('utm_campaign')||''}})();
+
+    // META PIXEL helper
+    function pixelTrack(ev,params){if(typeof fbq==='function')fbq('track',ev,params||{})}
+
+    // TELEGRAM WEBHOOK — ⚠️ SUBSTITUIR TOKEN
+    var TELEGRAM_TOKEN='SEU_TOKEN_COMPLETO';
+    var TELEGRAM_CHAT='996533875';
+
+    function sendTelegram(nome,whatsapp,interesse){
+        var msg='🔥 Novo lead!\n\n👤 Nome: '+nome+'\n📱 WhatsApp: '+whatsapp+'\n💡 Interesse: '+interesse;
+        if(_utms.source||_utms.medium||_utms.campaign){
+            msg+='\n\n📊 Origem:';
+            if(_utms.source)msg+='\n  Source: '+_utms.source;
+            if(_utms.medium)msg+='\n  Medium: '+_utms.medium;
+            if(_utms.campaign)msg+='\n  Campaign: '+_utms.campaign;
         }
+        fetch('https://api.telegram.org/bot'+TELEGRAM_TOKEN+'/sendMessage',{
+            method:'POST',headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({chat_id:TELEGRAM_CHAT,text:msg})
+        }).catch(function(){});
     }
 
-    // ============================================================
-    // TELEGRAM WEBHOOK
-    // ⚠️ NILTON: substitua SEU_TOKEN_COMPLETO pelo token do bot
-    //   Formato: 8651838209:AAFxxx...  (pegue no @BotFather → /token)
-    // ============================================================
-    var TELEGRAM_TOKEN = 'SEU_TOKEN_COMPLETO'; // ← SUBSTITUIR
-    var TELEGRAM_CHAT  = '996533875';
-
-    function sendTelegram(nome, whatsapp, empresa, interesse) {
-        var empresaMap = {
-            'sim-mei':   'MEI',
-            'sim-me':    'ME/EPP',
-            'sim-media': 'Média empresa',
-            'nao':       'Quer abrir empresa'
-        };
-        var interesseMap = {
-            'ambos':  'Cota + Gestão',
-            'cota':   'Cota da pousada',
-            'gestao': 'Gestão empresarial'
-        };
-
-        var msg = '🔥 Novo lead!\n\n'
-            + '👤 Nome: '      + nome + '\n'
-            + '📱 WhatsApp: '  + whatsapp + '\n'
-            + '🏢 Empresa: '   + (empresaMap[empresa]   || empresa)   + '\n'
-            + '💡 Interesse: ' + (interesseMap[interesse] || interesse);
-
-        if (_utms.source || _utms.medium || _utms.campaign) {
-            msg += '\n\n📊 Origem:';
-            if (_utms.source)   msg += '\n  Source: '   + _utms.source;
-            if (_utms.medium)   msg += '\n  Medium: '   + _utms.medium;
-            if (_utms.campaign) msg += '\n  Campaign: ' + _utms.campaign;
-        }
-
-        fetch('https://api.telegram.org/bot' + TELEGRAM_TOKEN + '/sendMessage', {
-            method:  'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body:    JSON.stringify({ chat_id: TELEGRAM_CHAT, text: msg })
-        }).catch(function() {}); // silencia erros de rede — não bloqueia o lead
-    }
-
-    // ============================================================
-    // CHOICE SELECTION + Meta Pixel ViewContent
-    // ============================================================
-    function selectChoice(type, el) {
-        document.querySelectorAll('.choice-card').forEach(function(c) {
-            c.classList.remove('selected');
-        });
+    // CHOICE SELECTION
+    var chosenInterest='ambos';
+    function selectChoice(type,el){
+        document.querySelectorAll('.choice-card').forEach(function(c){c.classList.remove('selected')});
         el.classList.add('selected');
-
-        // Pré-preenche o campo interesse no form
-        var sel = document.getElementById('interesse');
-        if (sel) sel.value = (type === 'pousada') ? 'cota' : 'gestao';
-
-        // Meta Pixel ViewContent
-        pixelTrack('ViewContent', { content_name: type === 'pousada' ? 'Cota Pousada' : 'Gestão FBS' });
-
-        var reveal        = document.getElementById('reveal');
-        var pousadaDets   = document.getElementById('pousada-details');
-
-        if (type === 'gestao') {
-            pousadaDets.classList.add('active');
-            setTimeout(function() {
-                reveal.classList.add('active');
-                setTimeout(function() { reveal.scrollIntoView({ behavior: 'smooth' }); }, 300);
-            }, 2000);
-        } else {
-            pousadaDets.classList.remove('active');
+        chosenInterest=(type==='pousada')?'Cota Pousada':'Gestão FBS';
+        pixelTrack('ViewContent',{content_name:chosenInterest});
+        var reveal=document.getElementById('reveal');
+        var pd=document.getElementById('pousada-details');
+        if(type==='gestao'){
+            pd.classList.add('active');
+            setTimeout(function(){reveal.classList.add('active');setTimeout(function(){reveal.scrollIntoView({behavior:'smooth'})},300)},2000);
+        }else{
+            pd.classList.remove('active');
             reveal.classList.add('active');
-            setTimeout(function() { reveal.scrollIntoView({ behavior: 'smooth' }); }, 300);
+            setTimeout(function(){reveal.scrollIntoView({behavior:'smooth'})},300);
         }
     }
 
-    // ============================================================
     // FORM VALIDATION
-    // ============================================================
-    function onlyDigits(str) { return str.replace(/\D/g, ''); }
+    function onlyDigits(s){return s.replace(/\D/g,'')}
+    function setFieldState(id,ok,show){var g=document.getElementById(id);if(!show){g.classList.remove('has-error','is-valid');return}g.classList.toggle('has-error',!ok);g.classList.toggle('is-valid',ok)}
+    function validateNome(){var v=document.getElementById('nome').value.trim();var ok=v.length>=3;setFieldState('group-nome',ok,true);return ok}
+    function validateWhatsapp(){var d=onlyDigits(document.getElementById('whatsapp').value);var ok=d.length===11;setFieldState('group-whatsapp',ok,true);return ok}
 
-    function setFieldState(groupId, valid, show) {
-        var g = document.getElementById(groupId);
-        if (!show) { g.classList.remove('has-error','is-valid'); return; }
-        g.classList.toggle('has-error',  !valid);
-        g.classList.toggle('is-valid',    valid);
-    }
-
-    function validateNome() {
-        var val = document.getElementById('nome').value.trim();
-        var ok  = val.length >= 3;
-        setFieldState('group-nome', ok, true);
-        return ok;
-    }
-
-    function validateWhatsapp() {
-        var digits = onlyDigits(document.getElementById('whatsapp').value);
-        var ok     = digits.length === 11;
-        setFieldState('group-whatsapp', ok, true);
-        return ok;
-    }
-
-    function validateEmpresa() {
-        var val = document.getElementById('empresa').value;
-        var ok  = val !== '';
-        setFieldState('group-empresa', ok, true);
-        return ok;
-    }
-
-    // Live validation
-    document.getElementById('nome').addEventListener('blur', validateNome);
-    document.getElementById('whatsapp').addEventListener('blur', validateWhatsapp);
-    document.getElementById('empresa').addEventListener('change', validateEmpresa);
+    document.getElementById('nome').addEventListener('blur',validateNome);
+    document.getElementById('whatsapp').addEventListener('blur',validateWhatsapp);
 
     // WhatsApp mask
-    document.getElementById('whatsapp').addEventListener('input', function(e) {
-        var v = onlyDigits(e.target.value);
-        if (v.length > 11) v = v.slice(0, 11);
-        if      (v.length > 7) v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
-        else if (v.length > 2) v = '(' + v.slice(0,2) + ') ' + v.slice(2);
-        e.target.value = v;
+    document.getElementById('whatsapp').addEventListener('input',function(e){
+        var v=onlyDigits(e.target.value);if(v.length>11)v=v.slice(0,11);
+        if(v.length>7)v='('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7);
+        else if(v.length>2)v='('+v.slice(0,2)+') '+v.slice(2);
+        e.target.value=v;
     });
 
-    // ============================================================
-    // FORM SUBMIT
-    // ============================================================
-    function submitForm(e) {
+    // SUBMIT
+    function submitForm(e){
         e.preventDefault();
-
-        var nomeOk     = validateNome();
-        var whatsappOk = validateWhatsapp();
-        var empresaOk  = validateEmpresa();
-
-        if (!nomeOk || !whatsappOk || !empresaOk) return;
-
-        // Desabilita botão (anti-double-click)
-        var btn = document.getElementById('submit-btn');
-        btn.disabled = true;
-        btn.textContent = 'Abrindo WhatsApp...';
-
-        var nome      = document.getElementById('nome').value.trim();
-        var whatsapp  = document.getElementById('whatsapp').value.trim();
-        var empresa   = document.getElementById('empresa').value;
-        var interesse = document.getElementById('interesse').value;
-
-        // Meta Pixel Lead
-        pixelTrack('Lead', { content_name: interesse });
-
-        // Telegram notification (fire & forget)
-        sendTelegram(nome, whatsapp, empresa, interesse);
-
-        // Monta mensagem WhatsApp com UTMs
-        var utmInfo = '';
-        if (_utms.source || _utms.medium || _utms.campaign) {
-            utmInfo = '\n[origem: ' + [_utms.source, _utms.medium, _utms.campaign].filter(Boolean).join(' / ') + ']';
+        if(!validateNome()||!validateWhatsapp())return;
+        var btn=document.getElementById('submit-btn');
+        btn.disabled=true;btn.textContent='Abrindo WhatsApp...';
+        var nome=document.getElementById('nome').value.trim();
+        var whatsapp=document.getElementById('whatsapp').value.trim();
+        pixelTrack('Lead',{content_name:chosenInterest});
+        sendTelegram(nome,whatsapp,chosenInterest);
+        var utmInfo='';
+        if(_utms.source||_utms.medium||_utms.campaign){
+            utmInfo='\n[origem: '+[_utms.source,_utms.medium,_utms.campaign].filter(Boolean).join(' / ')+']';
         }
-
-        var empresaLabels = {
-            'sim-mei': 'MEI', 'sim-me': 'ME/EPP',
-            'sim-media': 'Média empresa', 'nao': 'Quero abrir empresa'
-        };
-        var interesseLabels = {
-            'ambos': 'Cota + Gestão', 'cota': 'Cota da pousada', 'gestao': 'Gestão empresarial'
-        };
-
-        var msg = encodeURIComponent(
-            'Olá! Me chamo ' + nome + '.\n'
-            + 'Tenho interesse no pacote FBS + Cota Recanto das Águas.\n'
-            + 'Empresa: ' + (empresaLabels[empresa] || empresa) + '\n'
-            + 'Maior interesse: ' + (interesseLabels[interesse] || interesse) + '\n'
-            + 'Meu WhatsApp: ' + whatsapp
-            + utmInfo
-        );
-
-        setTimeout(function() {
-            window.open('https://wa.me/5516992755986?text=' + msg, '_blank');
-            // Re-habilita após 3s (caso o usuário queira reenviar)
-            setTimeout(function() {
-                btn.disabled = false;
-                btn.textContent = 'Falar com a equipe no WhatsApp →';
-            }, 3000);
-        }, 300);
+        var msg=encodeURIComponent('Olá! Me chamo '+nome+'.\nTenho interesse no pacote FBS + Cota Recanto das Águas.\nInteresse: '+chosenInterest+'\nMeu WhatsApp: '+whatsapp+utmInfo);
+        setTimeout(function(){
+            window.open('https://wa.me/5516992755986?text='+msg,'_blank');
+            setTimeout(function(){btn.disabled=false;btn.textContent='🟢 Quero minha vaga — falar agora no WhatsApp'},3000);
+        },300);
     }
     </script>
 
