@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr Business I.A — Seu Consultor Empresarial que Nunca Dorme</title>
+  <meta name="description" content="Dr Business I.A é o agente de inteligência artificial que faz diagnóstico, análise financeira, planejamento estratégico, consultoria contábil, jurídica e valuation para a sua empresa — 24h por dia." />
+  <meta name="keywords" content="consultoria empresarial IA, diagnóstico empresarial, análise financeira, planejamento estratégico, CFO virtual, consultoria contábil, consultoria jurídica, valuation, Dr Business" />
+  <meta name="author" content="Grupo FBS" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Dr Business I.A — Seu Consultor Empresarial que Nunca Dorme" />
+  <meta property="og:description" content="Diagnóstico, análise financeira, planejamento estratégico, contabilidade, jurídico e valuation — tudo em um único agente de IA especializado no seu negócio." />
+  <meta property="og:image" content="https://drbusiness.fbs.com.br/og-image.png" />
+  <meta property="og:url" content="https://drbusiness.fbs.com.br" />
+  <meta property="og:site_name" content="Dr Business I.A" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Dr Business I.A — Seu Consultor Empresarial que Nunca Dorme" />
+  <meta name="twitter:description" content="O agente de IA que substitui sua consultoria tradicional por uma fração do custo." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ========================================================
+       RESET & BASE
+    ======================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:    #1A365D;
+      --secondary:  #2B6CB0;
+      --accent:     #38A169;
+      --accent-light: #48BB78;
+      --white:      #FFFFFF;
+      --gray-50:    #F7FAFC;
+      --gray-100:   #EDF2F7;
+      --gray-200:   #E2E8F0;
+      --gray-400:   #A0AEC0;
+      --gray-600:   #718096;
+      --gray-700:   #4A5568;
+      --gray-800:   #2D3748;
+      --gray-900:   #1A202C;
+      --gradient-hero: linear-gradient(135deg, #0D2137 0%, #1A365D 45%, #1E4976 100%);
+      --gradient-accent: linear-gradient(135deg, #38A169 0%, #2F855A 100%);
+      --gradient-card: linear-gradient(145deg, #ffffff 0%, #f7fafc 100%);
+      --shadow-sm:  0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+      --shadow-md:  0 4px 16px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.07);
+      --shadow-lg:  0 10px 40px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.08);
+      --shadow-xl:  0 20px 60px rgba(0,0,0,.15), 0 8px 20px rgba(0,0,0,.10);
+      --radius-sm:  8px;
+      --radius-md:  12px;
+      --radius-lg:  20px;
+      --radius-xl:  28px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--gray-800);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ========================================================
+       ANIMATIONS
+    ======================================================== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+    .fade-in-delay-5 { transition-delay: 0.5s; }
+    .fade-in-delay-6 { transition-delay: 0.6s; }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(1.3); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-12px); }
+    }
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes typing {
+      0%   { width: 0; }
+      60%  { width: 100%; }
+      100% { width: 100%; }
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    /* ========================================================
+       NAVBAR
+    ======================================================== */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(26, 54, 93, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      transition: var(--transition);
+    }
+    .navbar.scrolled {
+      background: rgba(13, 33, 55, 0.98);
+      box-shadow: 0 4px 20px rgba(0,0,0,.3);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+    .logo-icon {
+      width: 38px; height: 38px;
+      background: var(--gradient-accent);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(56,161,105,.4);
+    }
+    .logo-text span { color: var(--accent-light); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,.8);
+      font-size: .875rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--gradient-accent) !important;
+      color: var(--white) !important;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      box-shadow: 0 4px 14px rgba(56,161,105,.35);
+      transition: var(--transition) !important;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(56,161,105,.45) !important; }
+
+    .nav-mobile-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-mobile-toggle span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ========================================================
+       HERO
+    ======================================================== */
+    .hero {
+      background: var(--gradient-hero);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%; left: -10%;
+      width: 60%; height: 120%;
+      background: radial-gradient(ellipse, rgba(43,108,176,.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20%; right: -5%;
+      width: 50%; height: 80%;
+      background: radial-gradient(ellipse, rgba(56,161,105,.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(56,161,105,.15);
+      border: 1px solid rgba(56,161,105,.35);
+      color: var(--accent-light);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .badge-dot {
+      width: 7px; height: 7px;
+      background: var(--accent-light);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, #48BB78, #68D391);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,.72);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 480px;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gradient-accent);
+      color: var(--white);
+      padding: 15px 30px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 6px 24px rgba(56,161,105,.45);
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(56,161,105,.55);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.1);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 1rem;
+      border: 1px solid rgba(255,255,255,.2);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,.18);
+      transform: translateY(-1px);
+    }
+    .hero-trust {
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,.6);
+      font-size: .82rem;
+      font-weight: 500;
+    }
+    .trust-item svg { color: var(--accent-light); }
+    .trust-sep { color: rgba(255,255,255,.2); font-size: .8rem; }
+
+    /* Chat mockup */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      animation: float 5s ease-in-out infinite;
+    }
+    .chat-mockup {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-xl);
+      padding: 0;
+      width: 100%;
+      max-width: 420px;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl), 0 0 0 1px rgba(255,255,255,.05);
+      backdrop-filter: blur(8px);
+    }
+    .chat-header {
+      background: rgba(255,255,255,.08);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .chat-avatar {
+      width: 40px; height: 40px;
+      background: var(--gradient-accent);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .chat-header-info h4 {
+      color: var(--white);
+      font-size: .9rem;
+      font-weight: 700;
+    }
+    .chat-header-info span {
+      color: var(--accent-light);
+      font-size: .75rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .online-dot {
+      width: 6px; height: 6px;
+      background: var(--accent-light);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    .chat-body { padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+    .msg {
+      max-width: 85%;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-size: .85rem;
+      line-height: 1.5;
+    }
+    .msg-bot {
+      background: rgba(255,255,255,.1);
+      color: rgba(255,255,255,.9);
+      border-bottom-left-radius: 4px;
+      align-self: flex-start;
+    }
+    .msg-user {
+      background: var(--secondary);
+      color: var(--white);
+      border-bottom-right-radius: 4px;
+      align-self: flex-end;
+    }
+    .msg-typing {
+      background: rgba(255,255,255,.08);
+      color: rgba(255,255,255,.6);
+      border-bottom-left-radius: 4px;
+      align-self: flex-start;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 14px 18px;
+    }
+    .typing-dot {
+      width: 7px; height: 7px;
+      background: rgba(255,255,255,.5);
+      border-radius: 50%;
+      animation: pulse-dot 1.2s ease-in-out infinite;
+    }
+    .typing-dot:nth-child(2) { animation-delay: .2s; }
+    .typing-dot:nth-child(3) { animation-delay: .4s; }
+    .msg-tag {
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--accent-light);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 4px;
+    }
+    .chat-metrics {
+      padding: 16px 20px;
+      background: rgba(56,161,105,.12);
+      border-top: 1px solid rgba(56,161,105,.2);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+    .metric-item { text-align: center; }
+    .metric-value {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--accent-light);
+      display: block;
+    }
+    .metric-label {
+      font-size: .65rem;
+      color: rgba(255,255,255,.55);
+      font-weight: 500;
+    }
+
+    /* ========================================================
+       SECTION COMMONS
+    ======================================================== */
+    section { padding: 96px 0; }
+    .section-tag {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      background: rgba(43,108,176,.1);
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    .section-tag.green {
+      color: var(--accent);
+      background: rgba(56,161,105,.1);
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+      max-width: 580px;
+    }
+    .section-header { margin-bottom: 60px; }
+    .section-header.centered { text-align: center; }
+    .section-header.centered .section-subtitle { margin: 0 auto; }
+
+    /* ========================================================
+       PROBLEMA
+    ======================================================== */
+    .problema { background: var(--gray-50); }
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .pain-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .pain-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--gradient-accent);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .pain-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .pain-card:hover::before { opacity: 1; }
+    .pain-icon {
+      width: 56px; height: 56px;
+      background: rgba(26,54,93,.07);
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+    .pain-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .pain-card p {
+      font-size: .9rem;
+      color: var(--gray-600);
+      line-height: 1.65;
+    }
+
+    /* ========================================================
+       SOLUÇÃO — MÓDULOS
+    ======================================================== */
+    .solucao { background: var(--white); }
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .module-card {
+      background: var(--gradient-card);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .module-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gradient-accent);
+      transform: scaleX(0);
+      transition: transform .3s ease;
+      transform-origin: left;
+    }
+    .module-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-6px); }
+    .module-card:hover::after { transform: scaleX(1); }
+    .module-emoji {
+      font-size: 2.2rem;
+      margin-bottom: 18px;
+      display: block;
+    }
+    .module-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .module-card p {
+      font-size: .875rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+    .module-features {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .module-features li {
+      font-size: .8rem;
+      color: var(--gray-600);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .module-features li::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ========================================================
+       COMO FUNCIONA
+    ======================================================== */
+    .como-funciona { background: var(--primary); }
+    .como-funciona .section-tag { color: var(--accent-light); background: rgba(56,161,105,.2); }
+    .como-funciona .section-title { color: var(--white); }
+    .como-funciona .section-subtitle { color: rgba(255,255,255,.65); }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      position: relative;
+    }
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 44px; left: calc(16.66% + 20px); right: calc(16.66% + 20px);
+      height: 2px;
+      background: linear-gradient(90deg, rgba(56,161,105,.4) 0%, rgba(56,161,105,.4) 100%);
+      border-top: 2px dashed rgba(56,161,105,.35);
+    }
+    .step-card {
+      text-align: center;
+      position: relative;
+    }
+    .step-number {
+      width: 88px; height: 88px;
+      background: rgba(255,255,255,.07);
+      border: 2px solid rgba(56,161,105,.4);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--accent-light);
+      position: relative;
+      z-index: 1;
+    }
+    .step-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .step-card p {
+      font-size: .9rem;
+      color: rgba(255,255,255,.6);
+      line-height: 1.65;
+    }
+
+    /* ========================================================
+       COMPARATIVO
+    ======================================================== */
+    .comparativo { background: var(--gray-50); }
+    .table-wrapper {
+      overflow-x: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      min-width: 600px;
+    }
+    thead tr {
+      background: var(--primary);
+    }
+    thead th {
+      padding: 20px 24px;
+      text-align: center;
+      color: rgba(255,255,255,.7);
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    thead th:first-child { text-align: left; color: rgba(255,255,255,.5); }
+    thead th.col-highlight {
+      background: var(--secondary);
+      color: var(--white);
+      position: relative;
+    }
+    thead th.col-highlight::before {
+      content: '⭐ RECOMENDADO';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: white;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      padding: 3px 12px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    tbody tr { border-bottom: 1px solid var(--gray-100); transition: background .2s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--gray-50); }
+    tbody td {
+      padding: 18px 24px;
+      font-size: .9rem;
+      color: var(--gray-700);
+      text-align: center;
+    }
+    tbody td:first-child {
+      text-align: left;
+      font-weight: 600;
+      color: var(--gray-800);
+    }
+    tbody td.col-highlight { background: rgba(43,108,176,.04); }
+    .check { color: var(--accent); font-size: 1.1rem; font-weight: 700; }
+    .cross { color: #FC8181; font-size: 1rem; }
+    .neutral { color: var(--gray-400); font-size: .85rem; }
+
+    /* ========================================================
+       PREÇOS
+    ======================================================== */
+    .precos { background: var(--white); }
+    .prices-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .price-card {
+      background: var(--white);
+      border: 2px solid var(--gray-200);
+      border-radius: var(--radius-xl);
+      padding: 36px 28px;
+      transition: var(--transition);
+      position: relative;
+    }
+    .price-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-xl); }
+    .price-card.featured {
+      border-color: var(--secondary);
+      background: var(--primary);
+      box-shadow: var(--shadow-xl);
+      transform: scale(1.04);
+    }
+    .price-card.featured:hover { transform: scale(1.04) translateY(-6px); }
+    .price-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gradient-accent);
+      color: var(--white);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 5px 20px;
+      border-radius: 100px;
+      white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(56,161,105,.4);
+    }
+    .price-plan {
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 8px;
+    }
+    .price-card.featured .price-plan { color: rgba(255,255,255,.5); }
+    .price-card h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .price-card.featured h3 { color: var(--white); }
+    .price-amount {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin: 20px 0 6px;
+    }
+    .price-currency { font-size: .9rem; font-weight: 600; color: var(--gray-500); }
+    .price-value { font-size: 2.6rem; font-weight: 900; color: var(--primary); line-height: 1; }
+    .price-period { font-size: .85rem; color: var(--gray-500); font-weight: 500; }
+    .price-card.featured .price-currency,
+    .price-card.featured .price-value,
+    .price-card.featured .price-period { color: var(--white); }
+    .price-card.featured .price-currency { color: rgba(255,255,255,.7); }
+    .price-card.featured .price-period { color: rgba(255,255,255,.6); }
+    .price-trial {
+      font-size: .8rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .price-card.featured .price-trial { color: var(--accent-light); }
+    .price-divider { border: none; border-top: 1px solid var(--gray-200); margin: 20px 0; }
+    .price-card.featured .price-divider { border-color: rgba(255,255,255,.12); }
+    .price-features { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+    .price-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: .88rem;
+      color: var(--gray-700);
+    }
+    .price-card.featured .price-features li { color: rgba(255,255,255,.8); }
+    .feature-check {
+      width: 20px; height: 20px;
+      background: rgba(56,161,105,.12);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .price-card.featured .feature-check { background: rgba(56,161,105,.25); }
+    .feature-check::after {
+      content: '✓';
+      font-size: .7rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .price-card.featured .feature-check::after { color: var(--accent-light); }
+    .btn-price {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 15px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: .95rem;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+    .btn-price-outline {
+      background: transparent;
+      border: 2px solid var(--secondary);
+      color: var(--secondary);
+    }
+    .btn-price-outline:hover {
+      background: var(--secondary);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+    .btn-price-main {
+      background: var(--gradient-accent);
+      color: var(--white);
+      box-shadow: 0 6px 20px rgba(56,161,105,.4);
+    }
+    .btn-price-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(56,161,105,.5);
+    }
+
+    /* ========================================================
+       DEPOIMENTOS
+    ======================================================== */
+    .depoimentos { background: var(--gray-50); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
+    }
+    .testimonial-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .testimonial-quote {
+      font-size: 2.5rem;
+      color: var(--secondary);
+      line-height: 1;
+      margin-bottom: 16px;
+      opacity: .25;
+      font-family: Georgia, serif;
+    }
+    .testimonial-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+    .star { color: #F6AD55; font-size: 1rem; }
+    .testimonial-text {
+      font-size: .9rem;
+      color: var(--gray-700);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .author-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .author-info h4 { font-size: .9rem; font-weight: 700; color: var(--primary); }
+    .author-info span { font-size: .8rem; color: var(--gray-500); }
+
+    /* ========================================================
+       FAQ
+    ======================================================== */
+    .faq { background: var(--white); }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .faq-item {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .faq-item:hover { border-color: var(--secondary); box-shadow: var(--shadow-sm); }
+    .faq-item.open { border-color: var(--secondary); background: rgba(43,108,176,.04); }
+    .faq-question {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .faq-question h4 {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.45;
+    }
+    .faq-icon {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--secondary);
+      color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem;
+      flex-shrink: 0;
+      transition: transform .3s;
+      margin-top: 2px;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--accent); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease, padding .4s ease;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; padding-top: 14px; }
+    .faq-answer p { font-size: .875rem; color: var(--gray-600); line-height: 1.7; }
+
+    /* ========================================================
+       CTA FINAL
+    ======================================================== */
+    .cta-final {
+      background: var(--gradient-hero);
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-final::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 200%;
+      background: radial-gradient(ellipse, rgba(56,161,105,.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cta-final-content { position: relative; z-index: 1; }
+    .cta-final h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .cta-final h2 span {
+      background: linear-gradient(135deg, #48BB78, #68D391);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .cta-final p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 40px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-final-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .cta-note {
+      margin-top: 20px;
+      font-size: .82rem;
+      color: rgba(255,255,255,.45);
+    }
+
+    /* ========================================================
+       FOOTER
+    ======================================================== */
+    footer {
+      background: var(--gray-900);
+      color: rgba(255,255,255,.6);
+      padding: 60px 0 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .logo { margin-bottom: 16px; }
+    .footer-brand p { font-size: .875rem; line-height: 1.7; max-width: 280px; color: rgba(255,255,255,.5); }
+    .footer-col h4 {
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+      margin-bottom: 20px;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { font-size: .875rem; color: rgba(255,255,255,.55); transition: color .2s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p { font-size: .8rem; color: rgba(255,255,255,.35); }
+    .footer-badges {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .footer-badge {
+      font-size: .75rem;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      color: rgba(255,255,255,.4);
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    /* ========================================================
+       WHATSAPP FLUTUANTE
+    ======================================================== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9999;
+      width: 60px; height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,.45), 0 2px 8px rgba(0,0,0,.2);
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.12) translateY(-3px);
+      box-shadow: 0 12px 36px rgba(37,211,102,.55);
+    }
+    .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
+    .whatsapp-tooltip {
+      position: absolute;
+      right: calc(100% + 12px);
+      bottom: 50%;
+      transform: translateY(50%);
+      background: var(--gray-800);
+      color: var(--white);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: .8rem;
+      font-weight: 600;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s;
+    }
+    .whatsapp-tooltip::after {
+      content: '';
+      position: absolute;
+      right: -6px; top: 50%;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-right: none;
+      border-left-color: var(--gray-800);
+    }
+    .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
+
+    /* ========================================================
+       RESPONSIVE
+    ======================================================== */
+    @media (max-width: 1024px) {
+      .modules-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 72px 0; }
+      .hero { padding: 90px 0 60px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { order: -1; }
+      .chat-mockup { max-width: 360px; }
+      .nav-links { display: none; }
+      .nav-mobile-toggle { display: flex; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .modules-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; gap: 32px; }
+      .steps-grid::before { display: none; }
+      .prices-grid { grid-template-columns: 1fr; }
+      .price-card.featured { transform: scale(1); }
+      .price-card.featured:hover { transform: translateY(-6px); }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2rem; }
+      .chat-mockup { max-width: 100%; }
+      .whatsapp-float { bottom: 20px; right: 20px; width: 52px; height: 52px; }
+    }
+
+    /* Mobile nav open */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 73px; left: 0; right: 0;
+      background: rgba(13,33,55,.98);
+      backdrop-filter: blur(16px);
+      z-index: 999;
+      padding: 20px;
+      flex-direction: column;
+      gap: 4px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      color: rgba(255,255,255,.8);
+      font-size: .95rem;
+      font-weight: 500;
+      padding: 12px 16px;
+      border-radius: 8px;
+      transition: background .2s;
+    }
+    .mobile-nav a:hover { background: rgba(255,255,255,.06); color: white; }
+    .mobile-nav .nav-cta {
+      margin-top: 8px;
+      text-align: center;
+      background: var(--gradient-accent) !important;
+      color: white !important;
+    }
+  </style>
+</head>
+<body>
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">🧠</div>
+      <div class="logo-text">Dr Business <span>I.A</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#solucao">Módulos</a></li>
+      <li><a href="#como-funciona">Como funciona</a></li>
+      <li><a href="#comparativo">Comparativo</a></li>
+      <li><a href="#precos">Preços</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#precos" class="nav-cta">Começar grátis</a></li>
+    </ul>
+    <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<nav class="mobile-nav" id="mobileNav">
+  <a href="#solucao" class="mobile-link">Módulos</a>
+  <a href="#como-funciona" class="mobile-link">Como funciona</a>
+  <a href="#comparativo" class="mobile-link">Comparativo</a>
+  <a href="#precos" class="mobile-link">Preços</a>
+  <a href="#faq" class="mobile-link">FAQ</a>
+  <a href="#precos" class="nav-cta mobile-link">Começar grátis agora</a>
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge fade-in">
+          <span class="badge-dot"></span>
+          IA especialista em negócios brasileiros
+        </div>
+        <h1 class="fade-in fade-in-delay-1">
+          Seu consultor empresarial que<br />
+          <span class="highlight">nunca dorme</span>
+        </h1>
+        <p class="hero-subtitle fade-in fade-in-delay-2">
+          Dr Business I.A analisa a saúde do seu negócio, cuida das finanças, traça estratégias, resolve questões contábeis, jurídicas e ainda diz quanto vale sua empresa — tudo em segundos, por uma fração do custo de uma consultoria tradicional.
+        </p>
+        <div class="hero-actions fade-in fade-in-delay-3">
+          <a href="#precos" class="btn-primary">
+            ⚡ Comece grátis por 7 dias
+          </a>
+          <a href="#como-funciona" class="btn-secondary">
+            Ver como funciona
+          </a>
+        </div>
+        <div class="hero-trust fade-in fade-in-delay-4">
+          <span class="trust-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.707 6.207l-4 4a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L7 8.086l3.293-3.293a1 1 0 011.414 1.414z"/></svg>
+            Sem cartão de crédito
+          </span>
+          <span class="trust-sep">·</span>
+          <span class="trust-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.707 6.207l-4 4a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L7 8.086l3.293-3.293a1 1 0 011.414 1.414z"/></svg>
+            Cancela quando quiser
+          </span>
+          <span class="trust-sep">·</span>
+          <span class="trust-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.707 6.207l-4 4a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L7 8.086l3.293-3.293a1 1 0 011.414 1.414z"/></svg>
+            Disponível 24/7
+          </span>
+        </div>
+      </div>
+
+      <!-- Chat Mockup -->
+      <div class="hero-visual fade-in fade-in-delay-2">
+        <div class="chat-mockup">
+          <div class="chat-header">
+            <div class="chat-avatar">🧠</div>
+            <div class="chat-header-info">
+              <h4>Dr Business I.A</h4>
+              <span><span class="online-dot"></span> Online agora · responde em segundos</span>
+            </div>
+          </div>
+          <div class="chat-body">
+            <div class="msg msg-user">
+              Meu faturamento cresceu 30% mas estou sem caixa. O que está errado?
+            </div>
+            <div>
+              <div class="msg-tag">Dr Business I.A</div>
+              <div class="msg msg-bot">
+                Isso é clássico: crescimento sem gestão de capital de giro. Seu ciclo financeiro está negativo. Vou analisar 3 pontos críticos:
+              </div>
+            </div>
+            <div class="msg msg-bot" style="margin-left: 0; margin-top: -4px;">
+              <strong style="color: #68D391;">①</strong> Prazo médio de recebimento<br/>
+              <strong style="color: #68D391;">②</strong> Giro de estoque<br/>
+              <strong style="color: #68D391;">③</strong> Prazo com fornecedores<br/><br/>
+              Me manda o DRE do último trimestre e eu calculo a necessidade de capital de giro em minutos. 📊
+            </div>
+            <div class="msg msg-typing">
+              <span class="typing-dot"></span>
+              <span class="typing-dot"></span>
+              <span class="typing-dot"></span>
+            </div>
+          </div>
+          <div class="chat-metrics">
+            <div class="metric-item">
+              <span class="metric-value">15min</span>
+              <span class="metric-label">Diagnóstico completo</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-value">24/7</span>
+              <span class="metric-label">Sempre disponível</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-value">R$97</span>
+              <span class="metric-label">A partir de /mês</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================
+     PROBLEMA
+========================================================= -->
+<section class="problema" id="problema">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-tag">O problema</div>
+      <h2 class="section-title">Por que 7 em cada 10 empresas<br />fecham antes dos 5 anos?</h2>
+      <p class="section-subtitle">Não é falta de esforço. É falta de informação certa na hora certa. Reconhece alguma dessas situações?</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card fade-in fade-in-delay-1">
+        <div class="pain-icon">😵</div>
+        <h3>Números que ninguém entende</h3>
+        <p>DRE, fluxo de caixa, EBITDA, margem de contribuição… O contador envia o relatório e você simplesmente guarda sem entender nada. As decisões continuam no feeling.</p>
+      </div>
+      <div class="pain-card fade-in fade-in-delay-2">
+        <div class="pain-icon">🎲</div>
+        <h3>Decisões no feeling, não nos dados</h3>
+        <p>Lançar um produto novo, contratar mais um funcionário, abrir uma filial — tudo decidido na intuição. Sem análise, sem projeção, sem plano de contingência. É risco puro.</p>
+      </div>
+      <div class="pain-card fade-in fade-in-delay-3">
+        <div class="pain-icon">💸</div>
+        <h3>Consultoria tradicional cara demais</h3>
+        <p>Um bom consultor cobra R$5.000 a R$20.000 por mês. Escritório de advocacia: mais R$3.000. Assessoria contábil estratégica: mais R$2.000. Fica inviável para a maioria das PMEs.</p>
+      </div>
+      <div class="pain-card fade-in fade-in-delay-4">
+        <div class="pain-icon">🔍</div>
+        <h3>Sem CFO, sem visão financeira</h3>
+        <p>Sua empresa cresce mas sem ninguém olhando para os números de verdade. Sem um CFO virtual que monitore, alerte e projete, você está pilotando no escuro — e descobrindo o problema tarde demais.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================
+     SOLUÇÃO
+========================================================= -->
+<section class="solucao" id="solucao">
+  <div class="container">
+    <div class="section-header centered fade-in">
+      <div class="section-tag green">A solução</div>
+      <h2 class="section-title">Tudo que sua empresa precisa,<br />em um único lugar</h2>
+      <p class="section-subtitle">6 módulos especializados que atuam como um time completo de consultores — disponível a qualquer hora, sem hora marcada.</p>
+    </div>
+    <div class="modules-grid">
+      <div class="module-card fade-in fade-in-delay-1">
+        <span class="module-emoji">🔍</span>
+        <h3>Diagnóstico Empresarial</h3>
+        <p>Avaliação completa da saúde do seu negócio em 15 minutos. Identifica gargalos, oportunidades e riscos antes que virem problemas.</p>
+        <ul class="module-features">
+          <li>Score de saúde empresarial</li>
+          <li>Análise SWOT automatizada</li>
+          <li>Plano de ação prioritário</li>
+        </ul>
+      </div>
+      <div class="module-card fade-in fade-in-delay-2">
+        <span class="module-emoji">📊</span>
+        <h3>Análise Financeira</h3>
+        <p>DRE, fluxo de caixa, capital de giro e projeções financeiras — tudo explicado em linguagem humana, não contábil.</p>
+        <ul class="module-features">
+          <li>Interpretação de DRE e Balanço</li>
+          <li>Gestão de fluxo de caixa</li>
+          <li>Projeções e cenários futuros</li>
+        </ul>
+      </div>
+      <div class="module-card fade-in fade-in-delay-3">
+        <span class="module-emoji">🎯</span>
+        <h3>Planejamento Estratégico</h3>
+        <p>Defina metas claras, construa OKRs, desenhe planos de ação e monitore o progresso com dados reais do seu negócio.</p>
+        <ul class="module-features">
+          <li>Definição de OKRs e KPIs</li>
+          <li>Roadmap estratégico 90 dias</li>
+          <li>Acompanhamento de metas</li>
+        </ul>
+      </div>
+      <div class="module-card fade-in fade-in-delay-4">
+        <span class="module-emoji">📒</span>
+        <h3>Consultoria Contábil/Fiscal</h3>
+        <p>Qual o melhor regime tributário para você? Como reduzir legalmente sua carga fiscal? Perguntas respondidas em segundos.</p>
+        <ul class="module-features">
+          <li>Comparativo Simples x Lucro Presumido x Real</li>
+          <li>Estratégias de economia fiscal</li>
+          <li>Guia de obrigações acessórias</li>
+        </ul>
+      </div>
+      <div class="module-card fade-in fade-in-delay-5">
+        <span class="module-emoji">⚖️</span>
+        <h3>Consultoria Jurídica Empresarial</h3>
+        <p>Contratos, estrutura societária, riscos trabalhistas e compliance — proteção jurídica sem precisar de reunião com advogado para cada dúvida.</p>
+        <ul class="module-features">
+          <li>Análise de contratos e cláusulas</li>
+          <li>Tipos societários e proteção patrimonial</li>
+          <li>Gestão de riscos jurídicos</li>
+        </ul>
+      </div>
+      <div class="module-card fade-in fade-in-delay-6">
+        <span class="module-emoji">💎</span>
+        <h3>Valuation & Crescimento</h3>
+        <p>Descubra quanto vale sua empresa hoje e o que fazer para aumentar esse valor. Ideal para captar investimento ou preparar uma venda.</p>
+        <ul class="module-features">
+          <li>Múltiplos de mercado e fluxo descontado</li>
+          <li>Alavancas de valorização</li>
+          <li>Preparação para M&A e captação</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================
+     COMO FUNCIONA
+========================================================= -->
+<section class="como-funciona" id="como-funciona">
+  <div class="container">
+    <div class="section-header centered fade-in">
+      <div class="section-tag">Processo</div>
+      <h2 class="section-title" style="color:white;">3 passos para ter um consultor<br />de classe mundial no seu bolso</h2>
+      <p class="section-subtitle">Simples, rápido e sem burocracia. Do cadastro ao primeiro diagnóstico em menos de 20 minutos.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card fade-in fade-in-delay-1">
+        <div class="step-number">1</div>
+        <h3>Cadastre sua empresa</h3>
+        <p>Informe os dados básicos do seu negócio — segmento, faturamento e principais desafios. Leva menos de 5 minutos. Sem burocracia.</p>
+      </div>
+      <div class="step-card fade-in fade-in-delay-2">
+        <div class="step-number">2</div>
+        <h3>Converse com o Dr Business</h3>
+        <p>Pergunte qualquer coisa sobre sua empresa em linguagem natural. O Dr Business I.A entende o contexto do seu negócio e responde com profundidade de especialista.</p>
+      </div>
+      <div class="step-card fade-in fade-in-delay-3">
+        <div class="step-number">3</div>
+        <h3>Execute com clareza</h3>
+        <p>Receba análises, planos de ação e recomendações concretas. Sem jargão, sem enrolação — só o que você precisa para tomar decisões melhores amanhã.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================
+     COMPARATIVO
+========================================================= -->
+<section class="comparativo" id="comparativo">
+  <div class="container">
+    <div class="section-header centered fade-in">
+      <div class="section-tag">Comparativo</div>
+      <h2 class="section-title">Por que Dr Business e não outro?</h2>
+      <p class="section-subtitle">Veja a diferença entre uma consultoria especializada e as alternativas que o mercado oferece.</p>
+    </div>
+    <div class="table-wrapper fade-in">
+      <table>
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th class="col-highlight">Dr Business I.A</th>
+            <th>Consultoria Tradicional</th>
+            <th>ChatGPT Genérico</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Disponibilidade</td>
+            <td class="col-highlight"><span class="check">✓</span> 24 horas, 7 dias</td>
+            <td><span class="cross">✗</span> Horário comercial</td>
+            <td><span class="check">✓</span> 24 horas</td>
+          </tr>
+          <tr>
+            <td>Especialização empresarial</td>
+            <td class="col-highlight"><span class="check">✓</span> Deep focus em PMEs BR</td>
+            <td><span class="check">✓</span> Especialista</td>
+            <td><span class="cross">✗</span> Generalista</td>
+          </tr>
+          <tr>
+            <td>Contexto da sua empresa</td>
+            <td class="col-highlight"><span class="check">✓</span> Aprende seu negócio</td>
+            <td><span class="check">✓</span> Constrói ao longo do tempo</td>
+            <td><span class="cross">✗</span> Sem memória</td>
+          </tr>
+          <tr>
+            <td>Custo mensal</td>
+            <td class="col-highlight"><span class="check">✓</span> R$97 a R$697</td>
+            <td><span class="cross">✗</span> R$5.000 a R$25.000</td>
+            <td><span class="neutral">~</span> R$100 (sem especialização)</td>
+          </tr>
+          <tr>
+            <td>Análise financeira real</td>
+            <td class="col-highlight"><span class="check">✓</span> DRE, caixa, projeções</td>
+            <td><span class="check">✓</span> Completa</td>
+            <td><span class="cross">✗</span> Superficial</td>
+          </tr>
+          <tr>
+            <td>Consultoria jurídica</td>
+            <td class="col-highlight"><span class="check">✓</span> Integrada</td>
+            <td><span class="neutral">~</span> Separado (custo extra)</td>
+            <td><span class="cross">✗</span> Não</td>
+          </tr>
+          <tr>
+            <td>Valuation do negócio</td>
+            <td class="col-highlight"><span class="check">✓</span> Método múltiplos + FCD</td>
+            <td><span class="neutral">~</span> Separado (custo extra)</td>
+            <td><span class="cross">✗</span> Estimativa genérica</td>
+          </tr>
+          <tr>
+            <td>Planejamento OKR/Estratégico</td>
+            <td class="col-highlight"><span class="check">✓</span> Módulo dedicado</td>
+            <td><span class="check">✓</span> Sim</td>
+            <td><span class="cross">✗</span> Sem estrutura</td>
+          </tr>
+          <tr>
+            <td>Tempo de resposta</td>
+            <td class="col-highlight"><span class="check">✓</span> Segundos</td>
+            <td><span class="cross">✗</span> Dias a semanas</td>
+            <td><span class="check">✓</span> Segundos</td>
+          </tr>
+          <tr>
+            <td>Período de teste gratuito</td>
+            <td class="col-highlight"><span class="check">✓</span> 7 dias completos</td>
+            <td><span class="cross">✗</span> Não oferece</td>
+            <td><span class="neutral">~</span> Versão limitada</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================
+     PREÇOS
+========================================================= -->
+<section class="precos" id="precos">
+  <div class="container">
+    <div class="section-header centered fade-in">
+      <div class="section-tag green">Planos e preços</div>
+      <h2 class="section-title">Investimento que se paga<br />na primeira decisão melhor</h2>
+      <p class="section-subtitle">Escolha o plano ideal para o tamanho do seu negócio. Todos começam com 7 dias grátis, sem compromisso.</p>
+    </div>
+    <div class="prices-grid">
+
+      <!-- Starter -->
+      <div class="price-card fade-in fade-in-delay-1">
+        <div class="price-plan">Starter</div>
+        <h3>Essencial</h3>
+        <div class="price-amount">
+          <span class="price-currency">R$</span>
+          <span class="price-value">97</span>
+          <span class="price-period">/mês</span>
+        </div>
+        <div class="price-trial">🎁 7 dias grátis para começar</div>
+        <hr class="price-divider" />
+        <ul class="price-features">
+          <li>
+            <span class="feature-check"></span>
+            1 empresa cadastrada
+          </li>
+          <li>
+            <span class="feature-check"></span>
+            Módulo Diagnóstico Empresarial
+          </li>
+          <li>
+            <span class="feature-check"></span>
+            Chat ilimitado com Dr Business
+          </li>
+          <li>
+            <span class="feature-check"></span>
+            Análise financeira básica
+          </li>
+          <li>
+            <span class="feature-check"></span>
+            Suporte por e-mail
+          </li>
+        </ul>
+        <a href="#" class="btn-price btn-price-outline">Começar grátis</a>
+      </div>
+
+      <!-- Professional -->
+      <div class="price-card featured fade-in fade-in-delay-2">
+        <div class="price-badge">🔥 Mais popular</div>
+        <div class="price-plan">Professional</div>
+        <h3>Completo</h3>
+        <div class="price-amount">
+          <span class="price-currency">R$</span>
+          <span class="price-value">297</span>
+          <span class="price-period">/mês</span>
+        </div>
+        <div class="price-trial">🎁 7 dias grátis para começar</div>
+        <hr class="price-divider" />
+        <ul class="price-features">
+          <li>
+            <span class="feature-check"></span>
+            Até 3 empresas cadastradas
+          </li>
+          <li>
+            <span class="feature-check"></span>
+            Todos os 6 módulos completos
+          </li>
+          <li>
+            <span class="feature-check"></span>
+            Análise financeira avançada (DRE, caixa, projeções)
+          </li>
+          <li>
+            <span class="feature-check"></span>
+            Consultoria contábil e fiscal
+          </li>
+          <li>
+            <span class="feature-check"></span>
+            Consultoria jurídica empresarial
+          </li>
+          <li>
+            <span class="feature-check"></span>
+            Valuation completo do negócio
+          </li>
+          <li>
+            <span class="feature-check"></span>
+            Relatórios exportáveis em PDF
+          </li>
+          <li>
+            <span class="feature-check"></span>
+            Suporte prioritário WhatsApp
+          </li>
+        </ul>
+        <a href="#" class="btn-price btn-price-main">Começar grátis agora</a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="price-card fade-in fade-in-delay-3">
+        <div class="price-plan">Enterprise</div>
+        <h3>Corporativo</h3>
+        <div class="price-amount">
+          <span class="price-currency">R$</span>
+          <span class="price-value">697</span>
+          <span class="price-period">/mês</span>
+        </div>
+        <div class="price-trial">🎁 7 dias grátis para começar</div>
+        <hr class="price-divider" />
+        <ul class="price-features">
+          <li>
+            <span class="feature-check"></span>
+            Empresas ilimitadas
+          </li>
+          <li>
+            <span class="feature-check"></span>
+            Tudo do plano Professional
+          </li>
+          <li>
+            <span class="feature-check"></span>
+            Sessão mensal com consultor humano FBS
+          </li>
+          <li>
+            <span class="feature-check"></span>
+            API de integração com sistemas
+          </li>
+          <li>
+            <span class="feature-check"></span>
+            Usuários ilimitados na equipe
+          </li>
+          <li>
+            <span class="feature-check"></span>
+            Onboarding personalizado
+          </li>
+          <li>
+            <span class="feature-check"></span>
+            SLA garantido e suporte dedicado
+          </li>
+        </ul>
+        <a href="#" class="btn-price btn-price-outline">Começar grátis</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================
+     DEPOIMENTOS
+========================================================= -->
+<section class="depoimentos" id="depoimentos">
+  <div class="container">
+    <div class="section-header centered fade-in">
+      <div class="section-tag">Depoimentos</div>
+      <h2 class="section-title">Empresários que pararam de<br />tomar decisões no escuro</h2>
+    </div>
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card fade-in fade-in-delay-1">
+        <div class="testimonial-quote">"</div>
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-text">
+          "Faturava R$180 mil por mês e não entendia por que nunca sobrava dinheiro. Em 20 minutos de conversa com o Dr Business, descobri que meu prazo médio de recebimento estava matando meu caixa. Problema resolvido em 60 dias."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background: linear-gradient(135deg, #2B6CB0, #1A365D);">RS</div>
+          <div class="author-info">
+            <h4>Ricardo Santos</h4>
+            <span>CEO · Distribuidora de alimentos · São Paulo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-in fade-in-delay-2">
+        <div class="testimonial-quote">"</div>
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-text">
+          "Estava pagando R$8.000/mês numa consultoria que me mandava relatório uma vez por mês. Com o Dr Business, tenho resposta na hora, pagando R$297. A análise do regime tributário sozinha já economizou R$14.000 no ano."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background: linear-gradient(135deg, #38A169, #276749);">AC</div>
+          <div class="author-info">
+            <h4>Ana Carolina Melo</h4>
+            <span>Sócia · Clínica de estética · Campinas</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-in fade-in-delay-3">
+        <div class="testimonial-quote">"</div>
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-text">
+          "Queria captar investimento mas nem sabia quanto minha empresa valia. O módulo de valuation do Dr Business me deu um laudo completo com múltiplos do setor. Apresentei para os investidores com muito mais confiança e fechei rodada."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background: linear-gradient(135deg, #D69E2E, #B7791F);">FM</div>
+          <div class="author-info">
+            <h4>Felipe Monteiro</h4>
+            <span>Fundador · SaaS de logística · Curitiba</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================
+     FAQ
+========================================================= -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-header centered fade-in">
+      <div class="section-tag">Dúvidas frequentes</div>
+      <h2 class="section-title">Perguntas que a gente<br />recebe toda semana</h2>
+    </div>
+    <div class="faq-grid">
+
+      <div class="faq-item fade-in" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <h4>Dr Business substitui meu contador ou advogado?</h4>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Não substituímos — complementamos. Dr Business atua como um CFO e consultor estratégico que traduz as informações técnicas dos especialistas em linguagem acessível e planos de ação práticos. Para assinar documentos e emitir pareceres formais, seu contador e advogado continuam essenciais.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in fade-in-delay-1" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <h4>Preciso ter experiência com tecnologia para usar?</h4>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Absolutamente não. Se você sabe mandar mensagem no WhatsApp, sabe usar o Dr Business. A interface é um chat inteligente — você escreve sua dúvida em português normal e o sistema entende, analisa e responde com profundidade de especialista.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in fade-in-delay-2" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <h4>Os 7 dias grátis têm alguma limitação?</h4>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Não. Durante os 7 dias de trial, você tem acesso completo ao plano escolhido, sem restrições. Não pedimos cartão de crédito para começar. Só cobramos se você decidir continuar após o período gratuito.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in fade-in-delay-3" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <h4>Meus dados financeiros ficam seguros?</h4>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sim. Todos os dados são criptografados em trânsito e em repouso, com padrão bancário (AES-256). Não compartilhamos nenhuma informação com terceiros. Seus dados pertencem exclusivamente a você e podem ser excluídos a qualquer momento mediante solicitação.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in fade-in-delay-4" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <h4>Funciona para qualquer segmento de negócio?</h4>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sim. Dr Business I.A foi treinado com dados de PMEs brasileiras de todos os segmentos — comércio, serviços, indústria, SaaS, clínicas, construtoras, agropecuária e muito mais. Quanto mais você informa sobre o seu negócio, mais específica e precisa fica a consultoria.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in fade-in-delay-5" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <h4>Posso cancelar quando quiser? Como funciona?</h4>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sim, sem burocracia. Você pode cancelar a qualquer momento diretamente na plataforma, em menos de 2 cliques. Não existe fidelidade mínima, multa ou taxa de cancelamento. O acesso continua até o final do período pago.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================
+     CTA FINAL
+========================================================= -->
+<section class="cta-final" id="cta-final">
+  <div class="container">
+    <div class="cta-final-content fade-in">
+      <h2>
+        Sua empresa merece<br />
+        <span>inteligência de verdade</span>
+      </h2>
+      <p>
+        Junte-se a centenas de empresários que já tomam decisões com base em dados, não no feeling. Comece hoje — é grátis por 7 dias.
+      </p>
+      <div class="cta-final-actions">
+        <a href="#precos" class="btn-primary" style="font-size: 1.05rem; padding: 17px 36px;">
+          ⚡ Começar grátis agora
+        </a>
+        <a href="https://wa.me/5511999999999" target="_blank" class="btn-secondary" style="font-size: 1.05rem; padding: 16px 30px;">
+          💬 Falar com especialista
+        </a>
+      </div>
+      <p class="cta-note">
+        Sem cartão de crédito · Sem burocracia · Cancela quando quiser
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">🧠</div>
+          <div class="logo-text" style="font-size: 1.1rem;">Dr Business <span>I.A</span></div>
+        </div>
+        <p>Agente de inteligência artificial especializado em consultoria empresarial para PMEs brasileiras. Um produto do Grupo FBS — Full Business Solutions.</p>
+        <p style="margin-top: 12px; font-size: .8rem; color: rgba(255,255,255,.3);">CNPJ: 00.000.000/0001-00</p>
+      </div>
+      <div class="footer-col">
+        <h4>Produto</h4>
+        <ul>
+          <li><a href="#solucao">Módulos</a></li>
+          <li><a href="#como-funciona">Como funciona</a></li>
+          <li><a href="#comparativo">Comparativo</a></li>
+          <li><a href="#precos">Planos e preços</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Grupo FBS</h4>
+        <ul>
+          <li><a href="#">FBS Contabilidade</a></li>
+          <li><a href="#">FBS Jurídico</a></li>
+          <li><a href="#">FBS PAY</a></li>
+          <li><a href="#">FBS Tecnologia</a></li>
+          <li><a href="#">Sobre o Grupo</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="mailto:contato@fbs.com.br">contato@fbs.com.br</a></li>
+          <li><a href="https://wa.me/5511999999999">WhatsApp</a></li>
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">LGPD</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Dr Business I.A · Grupo FBS — Full Business Solutions · Todos os direitos reservados.</p>
+      <div class="footer-badges">
+        <span class="footer-badge">🔒 SSL Seguro</span>
+        <span class="footer-badge">🛡️ LGPD Compliant</span>
+        <span class="footer-badge">🇧🇷 Produto brasileiro</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- =========================================================
+     WHATSAPP FLUTUANTE
+========================================================= -->
+<a href="https://wa.me/5511999999999?text=Ol%C3%A1%21+Quero+saber+mais+sobre+o+Dr+Business+I.A" 
+   target="_blank" 
+   rel="noopener noreferrer"
+   class="whatsapp-float"
+   aria-label="Falar no WhatsApp">
+  <div class="whatsapp-tooltip">Fale conosco no WhatsApp</div>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+
+<!-- =========================================================
+     SCRIPTS
+========================================================= -->
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile menu
+  const mobileToggle = document.getElementById('mobileToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  mobileToggle.addEventListener('click', () => {
+    mobileNav.classList.toggle('open');
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => mobileNav.classList.remove('open'));
+  });
+
+  // Fade-in on scroll (IntersectionObserver)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // FAQ toggle
+  function toggleFaq(item) {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+
+</body>
+</html>
