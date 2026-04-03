@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/landing-fbs/fbs-sistema/static/css/main.166eb7ff.css",
-    "main.js": "/landing-fbs/fbs-sistema/static/js/main.3f1cba0e.js",
-    "index.html": "/landing-fbs/fbs-sistema/index.html",
-    "main.166eb7ff.css.map": "/landing-fbs/fbs-sistema/static/css/main.166eb7ff.css.map",
-    "main.3f1cba0e.js.map": "/landing-fbs/fbs-sistema/static/js/main.3f1cba0e.js.map"
+    "main.css": "./static/css/main.a39dcd9f.css",
+    "main.js": "./static/js/main.d123dc04.js",
+    "index.html": "./index.html",
+    "main.a39dcd9f.css.map": "./static/css/main.a39dcd9f.css.map",
+    "main.d123dc04.js.map": "./static/js/main.d123dc04.js.map"
   },
   "entrypoints": [
-    "static/css/main.166eb7ff.css",
-    "static/js/main.3f1cba0e.js"
+    "static/css/main.a39dcd9f.css",
+    "static/js/main.d123dc04.js"
   ]
 }
