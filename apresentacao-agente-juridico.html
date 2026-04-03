@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FBS Jurídico — Inteligência Artificial</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #0A1628;
+    color: #E8E6E1;
+    overflow-x: hidden;
+  }
+
+  /* === HERO === */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    background: radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.08) 0%, transparent 60%);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+      linear-gradient(135deg, rgba(201,168,76,0.03) 0%, transparent 50%),
+      linear-gradient(225deg, rgba(201,168,76,0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50px;
+    padding: 8px 24px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #C9A84C;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    animation: fadeIn 1s ease;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 80px);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 24px;
+    animation: fadeUp 1s ease 0.2s both;
+  }
+
+  .hero h1 .gold {
+    background: linear-gradient(135deg, #C9A84C, #E8D48B, #C9A84C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p {
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 300;
+    color: rgba(232,230,225,0.7);
+    max-width: 600px;
+    line-height: 1.6;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(201,168,76,0.5);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+
+  .scroll-indicator .arrow {
+    width: 24px;
+    height: 24px;
+    border-right: 2px solid rgba(201,168,76,0.5);
+    border-bottom: 2px solid rgba(201,168,76,0.5);
+    transform: rotate(45deg);
+  }
+
+  /* === SECTION === */
+  section {
+    padding: 100px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C9A84C;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.15;
+  }
+
+  .section-subtitle {
+    font-size: 18px;
+    color: rgba(232,230,225,0.6);
+    max-width: 600px;
+    margin-bottom: 60px;
+    line-height: 1.6;
+  }
+
+  /* === CAPABILITIES GRID === */
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  .cap-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 36px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cap-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, #C9A84C, transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .cap-card:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(201,168,76,0.2);
+    transform: translateY(-4px);
+  }
+
+  .cap-card:hover::before {
+    opacity: 1;
+  }
+
+  .cap-icon {
+    font-size: 36px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .cap-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #E8E6E1;
+  }
+
+  .cap-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(232,230,225,0.6);
+  }
+
+  .cap-card .tag {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 4px 12px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 20px;
+    font-size: 12px;
+    color: #C9A84C;
+    font-weight: 500;
+  }
+
+  /* === COMPARISON === */
+  .comparison {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 48px;
+    margin-top: 80px;
+  }
+
+  .comparison h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .comp-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 8px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    align-items: center;
+  }
+
+  .comp-row.header {
+    border-bottom: 2px solid rgba(201,168,76,0.3);
+    padding-bottom: 20px;
+    margin-bottom: 8px;
+  }
+
+  .comp-row.header span {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(232,230,225,0.5);
+    text-align: center;
+  }
+
+  .comp-row.header span:last-child {
+    color: #C9A84C;
+  }
+
+  .comp-row .feature {
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .comp-row .check {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .yes { color: #C9A84C; }
+  .no { color: rgba(255,255,255,0.15); }
+  .partial { color: rgba(201,168,76,0.4); }
+
+  /* === STATS === */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px;
+    margin-top: 60px;
+  }
+
+  .stat-card {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(201,168,76,0.04);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 16px;
+  }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: #C9A84C;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: rgba(232,230,225,0.5);
+    font-weight: 500;
+  }
+
+  /* === FLOW === */
+  .flow-section {
+    padding: 100px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .flow-steps {
+    position: relative;
+    margin-top: 60px;
+  }
+
+  .flow-steps::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, #C9A84C, rgba(201,168,76,0.1));
+  }
+
+  .flow-step {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .flow-dot {
+    width: 58px;
+    height: 58px;
+    min-width: 58px;
+    border-radius: 50%;
+    background: #0A1628;
+    border: 2px solid #C9A84C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #C9A84C;
+    z-index: 1;
+  }
+
+  .flow-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .flow-content p {
+    font-size: 15px;
+    color: rgba(232,230,225,0.6);
+    line-height: 1.7;
+  }
+
+  .flow-content .time {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #C9A84C;
+    font-weight: 500;
+  }
+
+  /* === PHRASE === */
+  .phrase {
+    text-align: center;
+    padding: 120px 20px;
+    position: relative;
+  }
+
+  .phrase::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 200px;
+    color: rgba(201,168,76,0.08);
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    line-height: 1;
+  }
+
+  .phrase blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    line-height: 1.3;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .phrase blockquote .gold {
+    background: linear-gradient(135deg, #C9A84C, #E8D48B, #C9A84C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .phrase .author {
+    margin-top: 24px;
+    font-size: 14px;
+    color: rgba(232,230,225,0.4);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* === FOOTER === */
+  footer {
+    text-align: center;
+    padding: 60px 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  footer .logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #C9A84C;
+    margin-bottom: 8px;
+  }
+
+  footer p {
+    font-size: 13px;
+    color: rgba(232,230,225,0.3);
+  }
+
+  /* === ANIMATIONS === */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 768px) {
+    .comp-row {
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      font-size: 12px;
+    }
+    .comparison { padding: 24px 16px; }
+    .cap-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">⚖️ Inteligência Artificial Jurídica</div>
+  <h1>Eles buscam.<br><span class="gold">Nós pensamos.</span></h1>
+  <p>O primeiro agente jurídico do Brasil que analisa, estrategiza e redige — não só pesquisa.</p>
+  <div class="scroll-indicator">
+    <span>Conheça</span>
+    <div class="arrow"></div>
+  </div>
+</div>
+
+<!-- CAPACIDADES -->
+<section>
+  <div class="section-label">Capacidades</div>
+  <div class="section-title">O que fazemos</div>
+  <div class="section-subtitle">Cada módulo funciona 24 horas, 7 dias por semana, sem parar.</div>
+
+  <div class="cap-grid">
+
+    <div class="cap-card">
+      <span class="cap-icon">🔍</span>
+      <h3>Consulta em Tempo Real</h3>
+      <p>Acessa TJSP, STJ, STF e tribunais estaduais em tempo real. Puxa movimentações, decisões, partes e prazos de qualquer processo público do Brasil.</p>
+      <span class="tag">Todos os tribunais</span>
+    </div>
+
+    <div class="cap-card">
+      <span class="cap-icon">🧠</span>
+      <h3>Análise Estratégica</h3>
+      <p>Lê a sentença, identifica erros do advogado, encontra brechas na defesa adversária e monta estratégia de ataque ou defesa com base na lei e jurisprudência.</p>
+      <span class="tag">Inteligência real</span>
+    </div>
+
+    <div class="cap-card">
+      <span class="cap-icon">✍️</span>
+      <h3>Redação de Petições</h3>
+      <p>Gera minutas completas de petições, recursos, impugnações e manifestações com fundamentação legal, jurisprudência atualizada e argumentação persuasiva.</p>
+      <span class="tag">Pronto pra assinar</span>
+    </div>
+
+    <div class="cap-card">
+      <span class="cap-icon">🏦</span>
+      <h3>Pesquisa Patrimonial</h3>
+      <p>Cruza dados de empresas, sócios, processos paralelos e vínculos societários. Identifica patrimônio oculto, transferências suspeitas e confusão patrimonial.</p>
+      <span class="tag">Raio-X completo</span>
+    </div>
+
+    <div class="cap-card">
+      <span class="cap-icon">📐</span>
+      <h3>Cálculos Judiciais</h3>
+      <p>Calcula juros de mora, correção monetária, prazos processuais, multas e honorários com precisão. Verifica memórias de cálculo e aponta inconsistências.</p>
+      <span class="tag">Precisão total</span>
+    </div>
+
+    <div class="cap-card">
+      <span class="cap-icon">🔔</span>
+      <h3>Monitoramento 24h</h3>
+      <p>Acompanha processos automaticamente. Detecta novas movimentações, intimações e prazos. Alerta via WhatsApp ou Telegram antes que o prazo vença.</p>
+      <span class="tag">Nunca perde prazo</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<div class="flow-section">
+  <div class="section-label">Fluxo de trabalho</div>
+  <div class="section-title">Você conta o problema.<br>Nós resolvemos.</div>
+
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="flow-dot">1</div>
+      <div class="flow-content">
+        <h3>Recebe o caso</h3>
+        <p>Número do processo, nome da parte, ou descrição do problema. Aceita texto, áudio, documento.</p>
+        <span class="time">⚡ Instantâneo</span>
+      </div>
+    </div>
+
+    <div class="flow-step">
+      <div class="flow-dot">2</div>
+      <div class="flow-content">
+        <h3>Pesquisa e analisa</h3>
+        <p>Consulta tribunais, cruza dados, pesquisa patrimônio, verifica jurisprudência. Encontra o que humanos demoram dias pra achar.</p>
+        <span class="time">⚡ 2–5 minutos</span>
+      </div>
+    </div>
+
+    <div class="flow-step">
+      <div class="flow-dot">3</div>
+      <div class="flow-content">
+        <h3>Monta a estratégia</h3>
+        <p>Identifica pontos fortes, fraquezas do adversário, teses aplicáveis e riscos. Apresenta cenários com probabilidades.</p>
+        <span class="time">⚡ 5–10 minutos</span>
+      </div>
+    </div>
+
+    <div class="flow-step">
+      <div class="flow-dot">4</div>
+      <div class="flow-content">
+        <h3>Entrega o artefato</h3>
+        <p>Petição redigida, relatório de análise, memorial de cálculos, ou roteiro de audiência. Pronto pro advogado revisar e protocolar.</p>
+        <span class="time">⚡ 15–30 minutos</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARAÇÃO -->
+<section>
+  <div class="comparison">
+    <h2>O mercado busca. <span style="color:#C9A84C">Nós pensamos.</span></h2>
+
+    <div class="comp-row header">
+      <span>Capacidade</span>
+      <span>Jusbrasil</span>
+      <span>Themis</span>
+      <span>vLex</span>
+      <span style="font-size:14px">FBS IA</span>
+    </div>
+
+    <div class="comp-row">
+      <span class="feature">Busca de jurisprudência</span>
+      <span class="check yes">✦</span>
+      <span class="check partial">◐</span>
+      <span class="check yes">✦</span>
+      <span class="check yes">✦</span>
+    </div>
+
+    <div class="comp-row">
+      <span class="feature">Análise estratégica do caso</span>
+      <span class="check no">—</span>
+      <span class="check no">—</span>
+      <span class="check no">—</span>
+      <span class="check yes">✦</span>
+    </div>
+
+    <div class="comp-row">
+      <span class="feature">Redação de petições</span>
+      <span class="check no">—</span>
+      <span class="check partial">◐</span>
+      <span class="check no">—</span>
+      <span class="check yes">✦</span>
+    </div>
+
+    <div class="comp-row">
+      <span class="feature">Pesquisa patrimonial</span>
+      <span class="check no">—</span>
+      <span class="check no">—</span>
+      <span class="check no">—</span>
+      <span class="check yes">✦</span>
+    </div>
+
+    <div class="comp-row">
+      <span class="feature">Cruzamento de dados societários</span>
+      <span class="check no">—</span>
+      <span class="check no">—</span>
+      <span class="check no">—</span>
+      <span class="check yes">✦</span>
+    </div>
+
+    <div class="comp-row">
+      <span class="feature">Identificação de erros processuais</span>
+      <span class="check no">—</span>
+      <span class="check no">—</span>
+      <span class="check no">—</span>
+      <span class="check yes">✦</span>
+    </div>
+
+    <div class="comp-row">
+      <span class="feature">Cálculos judiciais automáticos</span>
+      <span class="check no">—</span>
+      <span class="check partial">◐</span>
+      <span class="check no">—</span>
+      <span class="check yes">✦</span>
+    </div>
+
+    <div class="comp-row">
+      <span class="feature">Monitoramento + alertas 24h</span>
+      <span class="check partial">◐</span>
+      <span class="check no">—</span>
+      <span class="check no">—</span>
+      <span class="check yes">✦</span>
+    </div>
+
+    <div class="comp-row">
+      <span class="feature">Atendimento via WhatsApp/Telegram</span>
+      <span class="check no">—</span>
+      <span class="check no">—</span>
+      <span class="check no">—</span>
+      <span class="check yes">✦</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- NÚMEROS -->
+<section>
+  <div class="section-label">Em números</div>
+  <div class="section-title">Velocidade que muda o jogo</div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number">30min</div>
+      <div class="stat-label">Análise completa de processo</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">24/7</div>
+      <div class="stat-label">Disponibilidade total</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">15min</div>
+      <div class="stat-label">Petição redigida</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">0</div>
+      <div class="stat-label">Prazos perdidos</div>
+    </div>
+  </div>
+</section>
+
+<!-- FRASE -->
+<div class="phrase">
+  <blockquote>
+    Eles são bibliotecas inteligentes.<br>
+    <span class="gold">Nós somos o advogado que nunca dorme.</span>
+  </blockquote>
+  <div class="author">FBS Jurídico — Inteligência Artificial</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo-text">FBS Jurídico</div>
+  <p>Grupo FBS — Full Business Solutions</p>
+  <p style="margin-top:8px; color: rgba(232,230,225,0.2);">Tecnologia que pensa. Resultado que aparece.</p>
+</footer>
+
+</body>
+</html>
